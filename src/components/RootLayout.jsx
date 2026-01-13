@@ -4,7 +4,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { motion, MotionConfig, useReducedMotion } from "framer-motion";
 import Container from "./Container";
 import Link from "next/link";
-import Logo from "./Logo";
+import Image from "next/image";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { IoMdClose } from "react-icons/io";
 import Button from "./Button";
@@ -21,18 +21,26 @@ const Header = ({
   onToggle,
   toggleRef,
 }) => {
-  // Container
   return (
     <Container>
       <div className="flex items-center justify-between">
         {/* Logo */}
-        <Link href={"/"} aria-label="Home">
-          <Logo invert={invert}>Abdullah Agency</Logo>
+        <Link href="/" aria-label="Home" className="flex items-center">
+          <Image
+            src={invert ? "/vexa-logo-white.png" : "/vexa-logo-black.png"}
+            alt="Vexa Agency"
+            width={90}
+            height={44}
+            priority
+            className="h-auto w-[90px]"
+          />
         </Link>
+
         <div className="flex items-center gap-x-8">
-          <Button href={"/contact"} invert={invert}>
+          <Button href="/contact" invert={invert}>
             Contact us
           </Button>
+
           <button
             ref={toggleRef}
             type="button"
@@ -59,6 +67,7 @@ const Header = ({
     </Container>
   );
 };
+
 const NavigationRow = ({ children }) => {
   return (
     <div className="even:mt-px sm:bg-neutral-950">
@@ -85,6 +94,10 @@ const Navigation = () => {
   return (
     <nav className="mt-px font-display text-5xl font-medium tracking-tight text-white">
       <NavigationRow>
+        <NavigationItem href="/what-we-do">What we do</NavigationItem>
+        <NavigationItem href="/about">About Us</NavigationItem>
+      </NavigationRow>
+      <NavigationRow>
         <NavigationItem href="/work">Our Work</NavigationItem>
         <NavigationItem href="/about">About Us</NavigationItem>
       </NavigationRow>
@@ -103,6 +116,7 @@ const RootLayoutInner = ({ children }) => {
   const closeRef = useRef();
   const navRef = useRef();
   const shouldReduceMotion = useReducedMotion();
+
   useEffect(() => {
     function onClick(event) {
       if (event.target.closest("a")?.href === window.location.href) {
@@ -110,11 +124,9 @@ const RootLayoutInner = ({ children }) => {
       }
     }
     window.addEventListener("click", onClick);
-
-    return () => {
-      window.removeEventListener("click", onClick);
-    };
+    return () => window.removeEventListener("click", onClick);
   }, []);
+
   return (
     <MotionConfig transition={shouldReduceMotion ? { duration: 0 } : undefined}>
       <header>
@@ -123,20 +135,21 @@ const RootLayoutInner = ({ children }) => {
           aria-hidden={expanded ? "true" : undefined}
           inert={expanded ? "" : undefined}
         >
-          {/* Header */}
+          {/* Header (closed state) */}
           <Header
             panelId={panelId}
             icon={HiMenuAlt4}
             toggleRef={openRef}
             expanded={expanded}
             onToggle={() => {
-              setExpanded((expanded) => !expanded);
+              setExpanded((v) => !v);
               window.setTimeout(() =>
                 closeRef.current?.focus({ preventScroll: true })
               );
             }}
           />
         </div>
+
         <motion.div
           layout
           id={panelId}
@@ -147,6 +160,7 @@ const RootLayoutInner = ({ children }) => {
         >
           <motion.div layout className="bg-neutral-800">
             <div ref={navRef} className="bg-neutral-950 pb-16 pt-14">
+              {/* Header (open state) */}
               <Header
                 invert
                 panelId={panelId}
@@ -154,15 +168,17 @@ const RootLayoutInner = ({ children }) => {
                 toggleRef={closeRef}
                 expanded={expanded}
                 onToggle={() => {
-                  setExpanded((expanded) => !expanded);
+                  setExpanded((v) => !v);
                   window.setTimeout(() =>
                     openRef.current?.focus({ preventScroll: true })
                   );
                 }}
               />
             </div>
+
             {/* Navigation */}
             <Navigation />
+
             <div className="relative bg-neutral-950 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-neutral-800">
               <Container>
                 <div className="grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16">
@@ -187,15 +203,13 @@ const RootLayoutInner = ({ children }) => {
           </motion.div>
         </motion.div>
       </header>
+
       <motion.div
         layout
         style={{ borderTopLeftRadius: 40, borderTopRightRadius: 40 }}
         className="relative flex flex-auto overflow-hidden bg-white pt-14"
       >
-        <motion.div
-          layout
-          className="relative isolate flex w-full flex-col pt-9"
-        >
+        <motion.div layout className="relative isolate flex w-full flex-col pt-9">
           <main className="w-full flex-auto">{children}</main>
           {/* Footer */}
           <Footer />
