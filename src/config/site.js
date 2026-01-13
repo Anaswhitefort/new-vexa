@@ -1,6 +1,6 @@
 export function constructMetadata({
-  title = "Abdullah Agency ",
-  description = "Abdullah Agency is an open-source website.",
+  title = "Vexa Ecommerce & Marketing Agency - Abu Dhabi ",
+  description = "Vexa is a Creative team of ads specialist, content creators and web/app developers, based in Abu dhabi. With years of experience supplying visuals for companies & marketing platforms.",
   image = "/agency.PNG",
   icons = "/favicon.ico",
   noIndex = false,
