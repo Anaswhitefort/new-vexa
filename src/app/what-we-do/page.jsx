@@ -2,6 +2,9 @@ import Build from "@/components/Build";
 import ContactSection from "@/components/ContactSection";
 import Deliver from "@/components/Deliver";
 import Onboarding from "@/components/Onboarding";
+import Develop from "@/components/Develop";
+import Shopify from "@/components/Shopify";
+import Fulfillment from "@/components/Fulfillment";
 import PageIntro from "@/components/PageIntro";
 import Values from "@/components/Values";
 import React from "react";
@@ -19,9 +22,15 @@ AI training, empowering businesses and their teams to
 thrive in the digital and ai era.</p>
       </PageIntro>
       <div className="mt-24 space-y-24 [counter-reset:section] sm:mt-32 sm:space-y-32 lg:mt-40 lg:space-y-40">
-        {/* Discover */}
+        {/* Onboarding */}
         <Onboarding />
-        {/* Build */}
+         {/* Develop */}
+        <Develop />
+        {/* Shopify */}
+        <Shopify/>
+        {/* Fulfillment */}
+        <Fulfillment/>
+        {/* Build */} 
         <Build />
         {/* Deliver */}
         <Deliver />
