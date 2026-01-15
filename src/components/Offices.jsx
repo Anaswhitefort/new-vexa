@@ -1,5 +1,4 @@
 import clsx from "clsx";
-
 function Office({ name, children, invert = false }) {
   return (
     <address
@@ -21,17 +20,20 @@ const Offices = ({ invert = false, ...props }) => {
   return (
     <ul role="list" {...props}>
       <li>
-        <Office name="U.S.A" invert={invert}>
-          on bay mark
+        <Office name="Abu Dhabi" invert={invert}>
+          Vexa L.L.C
           <br />
-          Newtown city of Las Vegas
+          Al reem island <br /> Building 6, Office 401<br />
+          Abu Dhabi,<br /> United Arab Emirates
         </Office>
       </li>
       <li>
-        <Office name="London" invert={invert}>
-          13 long Street
+        <Office name="Vexa Group" invert={invert}>         
+          <a href="https://vexa.ae" target="_blank" rel="noopener noreferrer" className="hover:underline">Vexa Advertisments</a>
           <br />
-          Downtown, Allyway
+          <a href="https://realty.vexa.ae" target="_blank" rel="noopener noreferrer" className="hover:underline">Vexa Realty</a>
+          <br />
+          <a href="https://lms.vexa.ae" target="_blank" rel="noopener noreferrer" className="hover:underline">Vexa LMS</a>
         </Office>
       </li>
     </ul>
