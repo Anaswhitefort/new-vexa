@@ -1,10 +1,10 @@
 import React from "react";
 import Section from "./Section";
-import imageMeeting from "@/images/meeting.jpg";
+import imageEcom from "@/images/ecom.jpg";
 
 const Onboarding = () => {
   return (
-    <Section title="E-commerce Onboarding & Marketing for Middle East" image={{ src: imageMeeting, shape: 1 }}>
+    <Section title="E-commerce Onboarding & Marketing for Middle East" image={{ src: imageEcom, shape: 1 }}>
       <div className="space-y-6 text-base text-neutral-600">
         <p>
           Expand into the GCC with clarity and confidence through Vexa’s end-to-end e-commerce onboarding, delivered from our Abu Dhabi headquarters for US and European brands entering the Middle East market—built for {" "}

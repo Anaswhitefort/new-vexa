@@ -8,31 +8,31 @@ import React from "react";
 const AboutPage = () => {
   return (
     <>
-      <PageIntro eyebrow="About us" title="Our strength is collaboration">
+      <PageIntro eyebrow="Our Story" title="Our strength is collaboration">
         <p>
           We believe that our strength lies in our collaborative approach, which
           puts our clients at the center of everything we do.
         </p>
         <div className="mt-10 max-w-2xl space-y-6 text-base">
           <p>
-            Studio was started by three friends who noticed that developer
+            Vexa.ae was started by three friends who noticed that developer
             studios were charging clients double what an in-house team would
             cost. Since the beginning, we have been committed to doing things
             differently by charging triple instead.
           </p>
           <p>
-            At Studio, we’re more than just colleagues — we’re a family. This
-            means we pay very little and expect people to work late. We want our
-            employees to bring their whole selves to work. In return, we just
-            ask that they keep themselves there until at least 6:30pm.
+            We are a creative team of ads specialists, content creators, and
+web/app developers, based in Abu dhabi. With years of
+experience supplying visuals for companies &
+marketing platforms.
           </p>
         </div>
       </PageIntro>
       <Container className="mt-16">
         <StatList>
-          <StatListItem value="35" label="Underpaid employees" />
-          <StatListItem value="52" label="Placated clients" />
-          <StatListItem value="$25M" label="Invoices billed" />
+          <StatListItem value="400+" label="Success Projects" />
+          <StatListItem value="100+" label="Success Clients" />
+          <StatListItem value="$5M+" label="Invoices billed" />
         </StatList>
       </Container>
       <Cultures />

@@ -1,11 +1,11 @@
 import React from "react";
 import Section from "./Section";
-import imageMeeting from "@/images/meeting.jpg";
+import imageDev from "@/images/dev.jpg";
 import List, { ListItem } from "./List";
 
 const Develop = () => {
   return (
-    <Section title="E-commerce, Web & Mobile App development" image={{ src: imageMeeting, shape: 1 }}>
+    <Section title="E-commerce, Web & Mobile App development" image={{ src: imageDev, shape: 2 }}>
       <div className="space-y-6 text-base text-neutral-600">
         <p>
           We design and develop e-commerce stores, websites, and mobile apps that do more than look good—they are engineered for {" "}
