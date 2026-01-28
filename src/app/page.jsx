@@ -24,7 +24,7 @@ export default function Home() {
           poster="/videos/hero-background-poster.jpg"
           controlsList="nodownload"
         >
-          <source src="/videos/hero-background-compressed.mp4" type="video/mp4" />
+          <source src="/videos/hero-background.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <Container className="mt-54 sm:mt-52 relative z-10">
