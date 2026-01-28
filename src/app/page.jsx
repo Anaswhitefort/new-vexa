@@ -20,8 +20,9 @@ export default function Home() {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           poster="/videos/hero-background-poster.jpg"
+          controlsList="nodownload"
         >
           <source src="/videos/hero-background-compressed.mp4" type="video/mp4" />
           Your browser does not support the video tag.
