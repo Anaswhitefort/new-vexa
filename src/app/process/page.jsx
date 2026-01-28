@@ -6,6 +6,16 @@ import PageIntro from "@/components/PageIntro";
 import Values from "@/components/Values";
 import React from "react";
 
+export const metadata = {
+  title: "Our Process | Shopify Development Methodology - Vexa Abu Dhabi",
+  description: "Learn about Vexa's proven ecommerce development process. We follow a strategic approach to deliver successful Shopify stores and digital marketing campaigns.",
+  keywords: "development process, Shopify methodology, ecommerce strategy, web design process, project management approach, digital transformation steps",
+  openGraph: {
+    title: "Our Development Process - Strategic Ecommerce Solutions",
+    description: "Understand how Vexa approaches Shopify development and ecommerce projects from start to finish.",
+  },
+};
+
 const ProcessPage = () => {
   return (
     <>

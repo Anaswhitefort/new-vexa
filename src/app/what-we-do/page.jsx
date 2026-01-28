@@ -9,6 +9,16 @@ import PageIntro from "@/components/PageIntro";
 import Values from "@/components/Values";
 import React from "react";
 
+export const metadata = {
+  title: "Services | Shopify Development, Web Design & Marketing - Vexa Abu Dhabi",
+  description: "Vexa offers comprehensive ecommerce services including Shopify development, web design, digital marketing, and content creation. Official Shopify partner in Abu Dhabi, UAE.",
+  keywords: "Shopify development UAE, web design services, ecommerce marketing, Shopify setup, digital marketing agency Abu Dhabi, Shopify expert",
+  openGraph: {
+    title: "Ecommerce Services - Shopify Development & Marketing - Vexa",
+    description: "Discover our full range of ecommerce and digital services designed to transform your business online.",
+  },
+};
+
 const ProcessPage = () => {
   return (
     <>

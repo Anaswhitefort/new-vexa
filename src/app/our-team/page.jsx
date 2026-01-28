@@ -5,6 +5,16 @@ import PageIntro from "@/components/PageIntro";
 import { StatList, StatListItem } from "@/components/StatList";
 import React from "react";
 
+export const metadata = {
+  title: "Our Team | Meet Vexa's Shopify Experts - Abu Dhabi",
+  description: "Meet the talented team at Vexa. Our Shopify experts, developers, designers, and marketers are passionate about transforming ecommerce businesses in Abu Dhabi and across the UAE.",
+  keywords: "Shopify team, ecommerce experts, web developers, digital marketing team, creative professionals Abu Dhabi",
+  openGraph: {
+    title: "Our Team - Vexa's Ecommerce & Shopify Experts",
+    description: "Get to know the talented team behind Vexa's success in Shopify development and digital marketing.",
+  },
+};
+
 const OurTeamPage = () => {
   return (
     <>
