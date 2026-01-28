@@ -122,23 +122,23 @@ const ContactForm = () => {
                 onChange={handleChange}
               />
               <RadioInput
-                label="$5K – $10K"
+                label="$5K – $25K"
                 name="budget"
-                value="50"
+                value="5"
                 checked={formData.budget === "50"}
                 onChange={handleChange}
               />
               <RadioInput
-                label="$10K – $15K"
+                label="$25K – $100K"
                 name="budget"
-                value="100"
+                value="25"
                 checked={formData.budget === "100"}
                 onChange={handleChange}
               />
               <RadioInput
-                label="More than $15K"
+                label="More than $100K"
                 name="budget"
-                value="150"
+                value="100"
                 checked={formData.budget === "150"}
                 onChange={handleChange}
               />
