@@ -3,8 +3,8 @@ import "./globals.css";
 
 export const metadata = {
   title: {
-    template: "Vexa Agency",
-    default: "Vexa Agency",
+    template: "Vexa Ecommerce & Marketing Agency | Abu Dhabi",
+    default: "Vexa Ecommerce & Marketing Agency | Abu Dhabi",
   },
 };
 

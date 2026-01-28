@@ -95,14 +95,15 @@ const Navigation = () => {
     <nav className="mt-px font-display text-5xl font-medium tracking-tight text-white">
       <NavigationRow>
         <NavigationItem href="/what-we-do">What we do</NavigationItem>
-        <NavigationItem href="/about">About Us</NavigationItem>
+       <NavigationItem href="/process">Our Process</NavigationItem>
       </NavigationRow>
       <NavigationRow>
         <NavigationItem href="/work">Our Work</NavigationItem>
-        <NavigationItem href="/about">About Us</NavigationItem>
+        <NavigationItem href="/our-team">Our Team</NavigationItem>
       </NavigationRow>
       <NavigationRow>
-        <NavigationItem href="/process">Our Process</NavigationItem>
+        
+         <NavigationItem href="/about">About Us</NavigationItem>
         <NavigationItem href="/blog">Blog</NavigationItem>
       </NavigationRow>
     </nav>
