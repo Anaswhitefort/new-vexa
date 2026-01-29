@@ -1,10 +1,6 @@
 import ContactSection from "@/components/ContactSection";
 import Container from "@/components/Container";
-import Anas from "@/components/Anas";
-import Abdullah from "@/components/Abdullah";
-import Hussain from "@/components/Hussain";
-import Jobert from "@/components/Jobert";
-import FadeIn from "@/components/FadeIn";
+import TeamMemberCarousel from "@/components/TeamMemberCarousel";
 import PageIntro from "@/components/PageIntro";
 import { StatList, StatListItem } from "@/components/StatList";
 import React from "react";
@@ -49,18 +45,7 @@ marketing platforms.
           <StatListItem value="$5M+" label="Invoices billed" />
         </StatList>
       </Container>
-      <FadeIn>
-        <Anas />
-      </FadeIn>
-      <FadeIn>
-        <Abdullah />
-      </FadeIn>
-      <FadeIn>
-        <Hussain />
-      </FadeIn>
-      <FadeIn>
-        <Jobert />
-      </FadeIn>
+      <TeamMemberCarousel />
       <ContactSection />
     </>
   );

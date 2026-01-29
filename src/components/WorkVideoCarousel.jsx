@@ -128,7 +128,7 @@ const WorkVideoCarousel = () => {
   const isLoading = !loadingComplete[currentVideoIndex];
 
   return (
-    <div className="w-full bg-site bg-site-grain rounded-4xl py-16 md:py-24">
+    <div className="w-full py-16 md:py-24">
       <div className="max-w-5xl mx-auto px-4">
         {/* Video Container */}
         <motion.div
@@ -175,13 +175,13 @@ const WorkVideoCarousel = () => {
             <h3 className="text-2xl font-bold text-white">
               {videos[currentVideoIndex].title}
             </h3>
-            <p className="text-gray-400 text-sm mt-1">
+            <p className="text-black text-sm mt-1">
               Project {currentVideoIndex + 1} of {videos.length}
             </p>
           </div>
 
           {/* Scroll Indicator */}
-          <div className="hidden md:flex items-center gap-2 text-gray-400 text-sm">
+          <div className="hidden md:flex items-center gap-2 text-black text-sm">
             <span>Scroll to explore</span>
             <motion.div
               animate={{ y: [0, 5, 0] }}
