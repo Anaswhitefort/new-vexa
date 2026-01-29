@@ -1,4 +1,6 @@
 import PageIntro from "@/components/PageIntro";
+import WorkVideoCarousel from "@/components/WorkVideoCarousel";
+import ContactSection from "@/components/ContactSection";
 import React from "react";
 
 export const metadata = {
@@ -19,11 +21,11 @@ const WorkPage = () => {
         title="Proven solutions for real-world problems."
       >
         <p>
-          We believe in efficiency and maximizing our resources to provide the
-          best value to our clients. The primary way we do that is by re-using
-          the same five projects we’ve been developing for the past decade.
+          Explore our portfolio of successful projects and case studies showcasing our expertise in Shopify development and digital marketing.
         </p>
       </PageIntro>
+      <WorkVideoCarousel />
+      <ContactSection />
     </>
   );
 };
