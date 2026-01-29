@@ -23,16 +23,16 @@ data-driven marketing solutions.        </p>
       <Container className="mt-16">
         <GridList>
           <GridListItem title="E-commerce Solution Expert" invert>
-           Our mission 
+            Our mission
           </GridListItem>
           <GridListItem title="Trust" invert>
-            We don’t care when our team works just as long as they are working
+            We don't care when our team works just as long as they are working
             every waking second to met our clients needs.
           </GridListItem>
           <GridListItem title="Vision" invert>
-           To be the Middle East’s leading e-commerce and digital
-marketing agency, recognized for innovation, creativity,
-and integrity. 
+            To be the Middle East's leading e-commerce and digital
+            marketing agency, recognized for innovation, creativity,
+            and integrity.
           </GridListItem>
         </GridList>
       </Container>
