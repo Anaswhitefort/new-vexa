@@ -26,11 +26,11 @@ data-driven marketing solutions.        </p>
             Our mission
           </GridListItem>
           <GridListItem title="Trust" invert>
-            We don't care when our team works just as long as they are working
+            We don&apos;t care when our team works just as long as they are working
             every waking second to met our clients needs.
           </GridListItem>
           <GridListItem title="Vision" invert>
-            To be the Middle East's leading e-commerce and digital
+            To be the Middle East&apos;s leading e-commerce and digital
             marketing agency, recognized for innovation, creativity,
             and integrity.
           </GridListItem>
