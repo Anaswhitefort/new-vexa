@@ -10,6 +10,7 @@ import Jobert from "./Jobert";
 const TeamMemberCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isInCarousel, setIsInCarousel] = useState(false);
+  const [entryDirection, setEntryDirection] = useState(null); // 'down' or 'up'
   const carouselRef = useRef(null);
   const wheelTimeoutRef = useRef(null);
   const touchStartRef = useRef(0);
@@ -43,17 +44,56 @@ const TeamMemberCarousel = () => {
             rect.bottom > 0
         );
       } else {
-        // On mobile:
-        // - When scrolling down, activate when carousel top reaches viewport top
-        // - When scrolling up, activate when carousel bottom reaches viewport bottom
+        // On mobile: directional scroll locking
         let shouldActivate = false;
+        let direction = entryDirection;
 
-        if (isScrollingDown) {
-          // Scrolling down: lock when carousel top reaches top of viewport
-          shouldActivate = rect.top <= 0 && rect.bottom > 0;
+        if (!isInCarousel) {
+          // Not in carousel - check if we should activate
+          if (isScrollingDown) {
+            // Scrolling down: lock when carousel top reaches viewport top
+            if (rect.top <= 0 && rect.bottom > 0) {
+              shouldActivate = true;
+              direction = "down";
+            }
+          } else {
+            // Scrolling up: lock when carousel bottom reaches viewport bottom
+            if (rect.bottom >= window.innerHeight && rect.top < window.innerHeight) {
+              shouldActivate = true;
+              direction = "up";
+            }
+          }
+          if (direction) setEntryDirection(direction);
         } else {
-          // Scrolling up: lock when carousel bottom reaches bottom of viewport
-          shouldActivate = rect.bottom >= window.innerHeight && rect.top < window.innerHeight;
+          // Already in carousel - check if we should deactivate
+          if (entryDirection === "down") {
+            // Came from scrolling down: deactivate when reaching Anas while trying to scroll down
+            if (!isScrollingDown && currentIndex === 0) {
+              // User is now scrolling up and at first component - stay locked
+              shouldActivate = true;
+            } else if (isScrollingDown && currentIndex === teamMembers.length - 1) {
+              // User scrolling down and reached last component - deactivate
+              shouldActivate = false;
+              direction = null;
+            } else {
+              shouldActivate = true;
+            }
+          } else if (entryDirection === "up") {
+            // Came from scrolling up: deactivate when reaching Jobert while trying to scroll up
+            if (isScrollingDown && currentIndex === teamMembers.length - 1) {
+              // User is now scrolling down and at last component - stay locked
+              shouldActivate = true;
+            } else if (!isScrollingDown && currentIndex === 0) {
+              // User scrolling up and reached first component - deactivate
+              shouldActivate = false;
+              direction = null;
+            } else {
+              shouldActivate = true;
+            }
+          }
+          if (direction !== entryDirection) {
+            setEntryDirection(direction);
+          }
         }
 
         setIsInCarousel(shouldActivate);
@@ -64,7 +104,7 @@ const TeamMemberCarousel = () => {
     handleScroll(); // Check on mount
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isInCarousel, entryDirection, currentIndex, teamMembers.length]);
 
   // Lock body scroll when carousel is active on mobile
   useEffect(() => {
