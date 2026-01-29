@@ -1,6 +1,10 @@
 import ContactSection from "@/components/ContactSection";
 import Container from "@/components/Container";
-import Cultures from "@/components/Cultures";
+import Anas from "@/components/Anas";
+import Abdullah from "@/components/Abdullah";
+import Hussain from "@/components/Hussain";
+import Jobert from "@/components/Jobert";
+import FadeIn from "@/components/FadeIn";
 import PageIntro from "@/components/PageIntro";
 import { StatList, StatListItem } from "@/components/StatList";
 import React from "react";
@@ -32,7 +36,7 @@ const OurTeamPage = () => {
           </p>
           <p>
             We are a creative team of ads specialists, content creators, and
-web/app developers, based in Abu dhabi. With years of
+web/app developers, based in Abu Dhabi. With years of
 experience supplying visuals for companies &
 marketing platforms.
           </p>
@@ -45,7 +49,18 @@ marketing platforms.
           <StatListItem value="$5M+" label="Invoices billed" />
         </StatList>
       </Container>
-      <Cultures />
+      <FadeIn>
+        <Anas />
+      </FadeIn>
+      <FadeIn>
+        <Abdullah />
+      </FadeIn>
+      <FadeIn>
+        <Hussain />
+      </FadeIn>
+      <FadeIn>
+        <Jobert />
+      </FadeIn>
       <ContactSection />
     </>
   );
