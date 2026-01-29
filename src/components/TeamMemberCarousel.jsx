@@ -13,6 +13,7 @@ const TeamMemberCarousel = () => {
   const carouselRef = useRef(null);
   const wheelTimeoutRef = useRef(null);
   const touchStartRef = useRef(0);
+  const lastScrollYRef = useRef(0);
 
   const teamMembers = [
     { Component: Anas, name: "Anas" },
@@ -28,6 +29,9 @@ const TeamMemberCarousel = () => {
 
       const isDesktop = window.innerWidth >= 768; // md breakpoint
       const rect = carouselRef.current.getBoundingClientRect();
+      const currentScrollY = window.scrollY || window.pageYOffset;
+      const isScrollingDown = currentScrollY > lastScrollYRef.current;
+      lastScrollYRef.current = currentScrollY;
 
       if (isDesktop) {
         // On desktop, activate scroll control when carousel middle reaches viewport middle
@@ -39,8 +43,16 @@ const TeamMemberCarousel = () => {
             rect.bottom > 0
         );
       } else {
-        // On mobile, activate scroll control when carousel top reaches viewport top
-        setIsInCarousel(rect.top <= 0 && rect.bottom > 0);
+        // On mobile:
+        // - When scrolling down, activate when carousel top reaches viewport top
+        // - When scrolling up, activate when carousel bottom reaches viewport bottom
+        if (isScrollingDown) {
+          setIsInCarousel(rect.top <= 0 && rect.bottom > 0);
+        } else {
+          setIsInCarousel(
+            rect.bottom >= window.innerHeight && rect.top < window.innerHeight
+          );
+        }
       }
     };
 
