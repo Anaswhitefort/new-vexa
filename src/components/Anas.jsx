@@ -23,16 +23,13 @@ data-driven marketing solutions.        </p>
       <Container className="mt-16">
         <GridList>
           <GridListItem title="E-commerce Solution Expert" invert>
-           Our mission 
+           GCC-focused e-commerce consultant driving store strategy, CRO, funnels, and paid growth—scaling revenue through structured systems and execution. 
           </GridListItem>
           <GridListItem title="Market Data Analyst " invert>
-            We don&apos;t care when our team works just as long as they are working
-            every waking second to met our clients needs.
+            Analyzes campaign, customer, and market data to spot trends, refine targeting, forecast demand, and improve ROI with clear reporting.
           </GridListItem>
           <GridListItem title="Shopify & React Developer" invert>
-           To be the Middle East&apos;s leading e-commerce and digital
-marketing agency, recognized for innovation, creativity,
-and integrity. 
+           Builds fast, conversion-ready Shopify stores and React front-ends, integrating apps, APIs, and custom features for smooth shopping experiences.
           </GridListItem>
         </GridList>
       </Container>

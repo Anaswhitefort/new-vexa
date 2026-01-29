@@ -12,28 +12,18 @@ const Abdullah = () => {
         invert
       >
         <p>
-With over seven years of experience, Anas specializes
-in paid advertising campaigns and e-commerce
-consulting tailored for the GCC market. As Team Lead,
-he combines strategic insight with hands-on expertise,
-guiding businesses in scaling online, optimizing digital
-presence, and achieving sustainable growth through
-data-driven marketing solutions.        </p>
+With 5+ years of experience as a social media manager, voice artist, and content moderator, Abdullah blends creativity and precision to craft engaging content, manage communities, and amplify brand presence online.       </p>
       </SectionIntro>
       <Container className="mt-16">
         <GridList>
           <GridListItem title="Advertising Specialist" invert>
-           Our mission 
+           Plans and optimizes paid social campaigns, sharp targeting, and A/B testing to boost reach, conversions, and measurable ROI consistently.
           </GridListItem>
           <GridListItem title="Voice Over Artist" invert>
-            We don&apos;t care when our team works just as long as they are working
-            every waking second to met our clients needs.
+           Delivers clear, expressive voice-overs for ads and videos, matching brand tone with professional pacing, emotion, and pronunciation.
           </GridListItem>
-          <GridListItem title="Vision" invert>
-           To be the Middle East&apos;s leading e-commerce and digital
-marketing agency, recognized for innovation, creativity,
-and integrity. 
-          </GridListItem>
+          <GridListItem title="Scripting & Editing" invert>
+Writes compelling scripts and edits videos with strong hooks, smooth pacing, captions, and sound timing to boost engagement.          </GridListItem>
         </GridList>
       </Container>
     </div>

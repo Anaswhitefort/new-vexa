@@ -12,27 +12,24 @@ const Jobert = () => {
         invert
       >
         <p>
-With over seven years of experience, Anas specializes
-in paid advertising campaigns and e-commerce
-consulting tailored for the GCC market. As Team Lead,
-he combines strategic insight with hands-on expertise,
-guiding businesses in scaling online, optimizing digital
-presence, and achieving sustainable growth through
-data-driven marketing solutions.        </p>
+With 8+ years of expertise in visual
+graphics and branding design,
+Jobert creates impactful visuals
+that elevate brand identity,
+blending creativity and strategy to
+engage audiences and strengthen
+business presence.         </p>
       </SectionIntro>
       <Container className="mt-16">
         <GridList>
-          <GridListItem title="E-commerce Solution Expert" invert>
-           Our mission 
+          <GridListItem title="Branding Expert" invert>
+            Develops cohesive brand identities through logos, color schemes, and visual guidelines that resonate with target audiences.
           </GridListItem>
-          <GridListItem title="Trust" invert>
-            We don&apos;t care when our team works just as long as they are working
-            every waking second to met our clients needs.
+          <GridListItem title="Creative Artist" invert>
+            Crafts visually compelling artwork and designs that communicate brand messages effectively and inspire audience engagement.
           </GridListItem>
-          <GridListItem title="Vision" invert>
-           To be the Middle East&apos;s leading e-commerce and digital
-marketing agency, recognized for innovation, creativity,
-and integrity. 
+          <GridListItem title="Product Photography" invert>
+           Captures high-quality product images that highlight features and appeal to target customers, enhancing e-commerce and marketing efforts.
           </GridListItem>
         </GridList>
       </Container>

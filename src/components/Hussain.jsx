@@ -12,27 +12,24 @@ const Hussain = () => {
         invert
       >
         <p>
-With over seven years of experience, Anas specializes
-in paid advertising campaigns and e-commerce
-consulting tailored for the GCC market. As Team Lead,
-he combines strategic insight with hands-on expertise,
-guiding businesses in scaling online, optimizing digital
-presence, and achieving sustainable growth through
-data-driven marketing solutions.        </p>
+With 5+ years of expertise in
+videography and editing, Hussain
+specializes in producing compelling
+content that captures brand stories,
+engages audiences, and enhances
+digital presence through high-quality
+visual storytelling and creativity.       </p>
       </SectionIntro>
       <Container className="mt-16">
         <GridList>
-          <GridListItem title="E-commerce Solution Expert" invert>
-            Our mission
+          <GridListItem title="Videography" invert>
+            Captures high-quality video content that tells brand stories and engages audiences through creative visual techniques.
           </GridListItem>
-          <GridListItem title="Trust" invert>
-            We don&apos;t care when our team works just as long as they are working
-            every waking second to met our clients needs.
+          <GridListItem title="Video Editing" invert>
+            Edits videos with attention to pacing, transitions, color grading, and sound to create polished, engaging final products.
           </GridListItem>
-          <GridListItem title="Vision" invert>
-            To be the Middle East&apos;s leading e-commerce and digital
-            marketing agency, recognized for innovation, creativity,
-            and integrity.
+          <GridListItem title="3D Artist" invert>
+            Creates stunning 3D visuals and animations to enhance video content and provide immersive brand experiences.
           </GridListItem>
         </GridList>
       </Container>
