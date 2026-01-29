@@ -112,6 +112,8 @@ const TeamMemberCarousel = () => {
         return;
       }
 
+      e.preventDefault();
+
       if (scrollDown && currentIndex < teamMembers.length - 1) {
         setCurrentIndex(currentIndex + 1);
       } else if (!scrollDown && currentIndex > 0) {
@@ -120,8 +122,8 @@ const TeamMemberCarousel = () => {
     };
 
     if (isInCarousel) {
-      window.addEventListener("touchstart", handleTouchStart, { passive: true });
-      window.addEventListener("touchend", handleTouchEnd, { passive: true });
+      window.addEventListener("touchstart", handleTouchStart, { passive: false });
+      window.addEventListener("touchend", handleTouchEnd, { passive: false });
     }
 
     return () => {
