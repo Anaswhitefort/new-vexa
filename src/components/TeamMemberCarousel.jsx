@@ -46,13 +46,17 @@ const TeamMemberCarousel = () => {
         // On mobile:
         // - When scrolling down, activate when carousel top reaches viewport top
         // - When scrolling up, activate when carousel bottom reaches viewport bottom
+        let shouldActivate = false;
+
         if (isScrollingDown) {
-          setIsInCarousel(rect.top <= 0 && rect.bottom > 0);
+          // Scrolling down: lock when carousel top reaches top of viewport
+          shouldActivate = rect.top <= 0 && rect.bottom > 0;
         } else {
-          setIsInCarousel(
-            rect.bottom >= window.innerHeight && rect.top < window.innerHeight
-          );
+          // Scrolling up: lock when carousel bottom reaches bottom of viewport
+          shouldActivate = rect.bottom >= window.innerHeight && rect.top < window.innerHeight;
         }
+
+        setIsInCarousel(shouldActivate);
       }
     };
 
@@ -61,6 +65,21 @@ const TeamMemberCarousel = () => {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Lock body scroll when carousel is active on mobile
+  useEffect(() => {
+    const isDesktop = window.innerWidth >= 768;
+    
+    if (isInCarousel && !isDesktop) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isInCarousel]);
 
   // Handle wheel scroll
   useEffect(() => {
@@ -113,7 +132,8 @@ const TeamMemberCarousel = () => {
       const touchEnd = e.changedTouches[0].clientY;
       const diff = touchStartRef.current - touchEnd;
 
-      if (Math.abs(diff) < 50) return;
+      // Minimum swipe distance
+      if (Math.abs(diff) < 30) return;
 
       const scrollDown = diff > 0;
       const isAtStart = currentIndex === 0;
