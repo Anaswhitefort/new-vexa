@@ -67,24 +67,16 @@ const TeamMemberCarousel = () => {
         } else {
           // Already in carousel - check if we should deactivate
           if (entryDirection === "down") {
-            // Came from scrolling down: deactivate when reaching Anas while trying to scroll down
-            if (!isScrollingDown && currentIndex === 0) {
-              // User is now scrolling up and at first component - stay locked
-              shouldActivate = true;
-            } else if (isScrollingDown && currentIndex === teamMembers.length - 1) {
-              // User scrolling down and reached last component - deactivate
+            // Came from scrolling down: deactivate when reaching Jobert (last component)
+            if (currentIndex === teamMembers.length - 1) {
               shouldActivate = false;
               direction = null;
             } else {
               shouldActivate = true;
             }
           } else if (entryDirection === "up") {
-            // Came from scrolling up: deactivate when reaching Jobert while trying to scroll up
-            if (isScrollingDown && currentIndex === teamMembers.length - 1) {
-              // User is now scrolling down and at last component - stay locked
-              shouldActivate = true;
-            } else if (!isScrollingDown && currentIndex === 0) {
-              // User scrolling up and reached first component - deactivate
+            // Came from scrolling up: deactivate when reaching Anas (first component)
+            if (currentIndex === 0) {
               shouldActivate = false;
               direction = null;
             } else {
