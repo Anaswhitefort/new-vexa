@@ -5,7 +5,7 @@ import Blockquote from "./Blockquote";
 
 const Build = () => {
   return (
-    <Section title="Build" image={{ src: imageLaptop, shape: 2 }}>
+    <Section title="Custom Mobile & Web Apps" image={{ src: imageLaptop, shape: 2 }}>
       <div className="space-y-6 text-base text-neutral-600">
         <p>
           Based off of the discovery phase, we develop a comprehensive roadmap
@@ -31,7 +31,7 @@ const Build = () => {
         author={{ name: "Debra Fiscal", role: "CEO of Unseal" }}
         className="mt-12"
       >
-        Studio_clone were so regular with their progress updates we almost began
+        Vexa were so regular with their progress updates we almost began
         to think they were automated!
       </Blockquote>
     </Section>

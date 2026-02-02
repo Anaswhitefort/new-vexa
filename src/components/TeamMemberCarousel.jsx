@@ -23,72 +23,42 @@ const TeamMemberCarousel = () => {
     { Component: Jobert, name: "Jobert" },
   ];
 
-  // Detect if user is in carousel section
+  // Handle carousel entry/exit based on scroll position
   useEffect(() => {
     const handleScroll = () => {
       if (!carouselRef.current) return;
 
-      const isDesktop = window.innerWidth >= 768; // md breakpoint
+      const isDesktop = window.innerWidth >= 768;
       const rect = carouselRef.current.getBoundingClientRect();
       const currentScrollY = window.scrollY || window.pageYOffset;
       const isScrollingDown = currentScrollY > lastScrollYRef.current;
       lastScrollYRef.current = currentScrollY;
 
       if (isDesktop) {
-        // On desktop, activate scroll control when carousel middle reaches viewport middle
+        // Desktop: activate when carousel middle reaches viewport middle
         const carouselMiddle = rect.top + rect.height / 2;
         const viewportMiddle = window.innerHeight / 2;
-        const threshold = 100; // pixels tolerance
-        setIsInCarousel(
-          Math.abs(carouselMiddle - viewportMiddle) < threshold &&
-            rect.bottom > 0
-        );
-      } else {
-        // On mobile: directional scroll locking
-        let shouldActivate = false;
-        let direction = entryDirection;
+        const threshold = 100;
+        const shouldEnter =
+          Math.abs(carouselMiddle - viewportMiddle) < threshold && rect.bottom > 0;
 
+        if (shouldEnter && !isInCarousel) {
+          setIsInCarousel(true);
+          setEntryDirection("desktop");
+        }
+      } else {
+        // Mobile: check entry when NOT in carousel
         if (!isInCarousel) {
-          // Not in carousel - check if we should activate
-          if (isScrollingDown) {
-            // Scrolling down: lock when carousel top reaches viewport top
-            if (rect.top <= 0 && rect.bottom > 0) {
-              shouldActivate = true;
-              direction = "down";
-            }
-          } else {
-            // Scrolling up: lock when carousel bottom reaches viewport bottom
-            if (rect.bottom >= window.innerHeight && rect.top < window.innerHeight) {
-              shouldActivate = true;
-              direction = "up";
-            }
-          }
-          if (direction) setEntryDirection(direction);
-        } else {
-          // Already in carousel - check if we should deactivate
-          if (entryDirection === "down") {
-            // Came from scrolling down: deactivate when reaching Jobert (last component)
-            if (currentIndex === teamMembers.length - 1) {
-              shouldActivate = false;
-              direction = null;
-            } else {
-              shouldActivate = true;
-            }
-          } else if (entryDirection === "up") {
-            // Came from scrolling up: deactivate when reaching Anas (first component)
-            if (currentIndex === 0) {
-              shouldActivate = false;
-              direction = null;
-            } else {
-              shouldActivate = true;
-            }
-          }
-          if (direction !== entryDirection) {
-            setEntryDirection(direction);
+          if (isScrollingDown && rect.top <= 0 && rect.bottom > 0) {
+            // Scrolling down: enter when carousel top reaches viewport top
+            setIsInCarousel(true);
+            setEntryDirection("down");
+          } else if (!isScrollingDown && rect.bottom >= window.innerHeight && rect.top < window.innerHeight) {
+            // Scrolling up: enter when carousel bottom reaches viewport bottom
+            setIsInCarousel(true);
+            setEntryDirection("up");
           }
         }
-
-        setIsInCarousel(shouldActivate);
       }
     };
 
@@ -96,7 +66,21 @@ const TeamMemberCarousel = () => {
     handleScroll(); // Check on mount
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isInCarousel, entryDirection, currentIndex, teamMembers.length]);
+  }, [isInCarousel]);
+
+  // Deactivate carousel at boundaries when currentIndex reaches end/start
+  useEffect(() => {
+    // Check boundaries immediately regardless of current state
+    if (entryDirection === "down" && currentIndex === teamMembers.length - 1) {
+      // Reached Jobert (last component) - deactivate immediately
+      setIsInCarousel(false);
+      setEntryDirection(null);
+    } else if (entryDirection === "up" && currentIndex === 0) {
+      // Reached Anas (first component) - deactivate immediately
+      setIsInCarousel(false);
+      setEntryDirection(null);
+    }
+  }, [entryDirection, currentIndex, teamMembers.length]);
 
   // Lock body scroll when carousel is active on mobile
   useEffect(() => {
@@ -122,7 +106,7 @@ const TeamMemberCarousel = () => {
       const isAtStart = currentIndex === 0;
       const isAtEnd = currentIndex === teamMembers.length - 1;
 
-      // Allow normal scrolling at boundaries
+      // Allow normal scrolling at boundaries - don't preventDefault
       if ((scrollDown && isAtEnd) || (!scrollDown && isAtStart)) {
         return;
       }

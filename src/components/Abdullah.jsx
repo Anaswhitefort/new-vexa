@@ -4,8 +4,39 @@ import Container from "./Container";
 import { GridList, GridListItem } from "./GridList";
 
 const Abdullah = () => {
+  // SEO Structured Data - Person Schema
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Abdullah Awawdeh",
+    jobTitle: "Social Media Manager & Content Creator",
+    image: "https://new-vexa.com/images/team/abdullah.jpg",
+    description: "Social media manager with 5+ years expertise in paid social campaigns, voice-over artistry, and content creation for brand engagement",
+    expertise: [
+      "Social Media Management",
+      "Paid Social Advertising",
+      "Voice-Over Artist",
+      "Content Creation",
+      "Video Scripting",
+      "Community Management",
+      "A/B Testing",
+      "Video Editing",
+      "Content Moderation"
+    ],
+    keywords: "social media, paid ads, content creation, voice over, video scripting, brand management, digital marketing",
+    affiliation: {
+      "@type": "Organization",
+      name: "Vexa",
+      url: "https://new-vexa.com"
+    }
+  };
+
   return (
     <div className="mt-24 rounded-4xl bg-site bg-site-grain py-24 sm:mt-32 lg:mt-40 lg:py-32">
+      {/* SEO Schema Markup */}
+      <script type="application/ld+json">
+        {JSON.stringify(personSchema)}
+      </script>
       <SectionIntro
         eyebrow="Social Media Manager"
         title="Abdullah Awawdeh."

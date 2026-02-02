@@ -4,8 +4,38 @@ import Container from "./Container";
 import { GridList, GridListItem } from "./GridList";
 
 const Jobert = () => {
+  // SEO Structured Data - Person Schema
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Jobert Salaya",
+    jobTitle: "Senior Graphic Designer & Branding Expert",
+    image: "https://new-vexa.com/images/team/jobert.jpg",
+    description: "Senior graphic designer with 8+ years expertise in visual branding, logo design, and product photography for e-commerce",
+    expertise: [
+      "Branding & Brand Identity",
+      "Logo Design",
+      "Graphic Design",
+      "Product Photography",
+      "Visual Design Systems",
+      "Creative Direction",
+      "E-commerce Design",
+      "Art Direction"
+    ],
+    keywords: "graphic design, branding, logo design, product photography, visual identity, brand design, e-commerce design",
+    affiliation: {
+      "@type": "Organization",
+      name: "Vexa",
+      url: "https://new-vexa.com"
+    }
+  };
+
   return (
     <div className="mt-24 rounded-4xl bg-site bg-site-grain py-24 sm:mt-32 lg:mt-40 lg:py-32">
+      {/* SEO Schema Markup */}
+      <script type="application/ld+json">
+        {JSON.stringify(personSchema)}
+      </script>
       <SectionIntro
         eyebrow="Senior Graphic Designer"
         title="Jobert Salaya."

@@ -41,8 +41,8 @@ marketing platforms.
       <Container className="mt-16">
         <StatList>
           <StatListItem value="400+" label="Success Projects" />
-          <StatListItem value="100+" label="Success Clients" />
-          <StatListItem value="$5M+" label="Invoices billed" />
+          <StatListItem value="300+" label="Success Clients" />
+          <StatListItem value="$2M+" label="Invoices billed" />
         </StatList>
       </Container>
       <Cultures />

@@ -32,24 +32,37 @@ const Services = () => {
           </div>
           {/* List item */}
           <List className="mt-16 lg:mt-0 lg:w-1/2 lg:min-w-[33rem] lg:pl-4">
-            <ListItem title="Web development">
-              We specialise in crafting beautiful, high quality marketing pages.
-              The rest of the website will be a shell that uses lorem ipsum
-              everywhere.
+            <ListItem title="GCC Entry & Expansion">
+              Expand confidently into the GCC market with our end-
+to-end expertise. Headquartered in Abu Dhabi, we help
+European and UK manufacturers build a strong regional
+presence through tailored e-commerce development,
+seamless marketplace onboarding, streamlined
+inventory management,payment solution and data-driven marketing
+strategies designed for long-term growth.
             </ListItem>
-            <ListItem title="Application development">
+<ListItem title="E-commerce development">
+              We design and develop E-commerce platforms that do more
+than just look good—they drive conversions. By focusing
+on seamless navigation, intuitive interfaces, and
+engaging user experiences, we ensure every interaction
+leaves a lasting impression. As the first touchpoint for
+potential customers, your digital presence becomes the
+deciding factor between missed opportunities and
+measurable success.
+            </ListItem>
+                        <ListItem title="Digital marketing">
+              We specialize in performance-driven digital marketing
+strategies designed to generate leads and boost sales.
+Every campaign is tailored to your growth objectives,
+ensuring seamless alignment with your business goals.
+With a strategy-first approach, our team identifies and
+executes the most effective methods to maximize
+reach, engagement, and measurable results.
+            </ListItem>
+            <ListItem title="Custom Application development">
               We have a team of skilled developers who are experts in the latest
-              app frameworks, like Angular 1 and Google Web Toolkit.
-            </ListItem>
-            <ListItem title="E-commerce">
-              We are at the forefront of modern e-commerce development. Which
-              mainly means adding your logo to the Shopify store template we’ve
-              used for the past six years.
-            </ListItem>
-            <ListItem title="Custom content management">
-              At Studio we understand the importance of having a robust and
-              customised CMS. That’s why we run all of our client projects out
-              of a single, enormous Joomla instance.
+              app frameworks, will develop Mobile & Web apps according to your needs.
             </ListItem>
           </List>
         </div>

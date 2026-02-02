@@ -4,8 +4,38 @@ import Container from "./Container";
 import { GridList, GridListItem } from "./GridList";
 
 const Anas = () => {
+  // SEO Structured Data - Person Schema
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Anas Abdul Azeez",
+    jobTitle: "Team Lead, E-commerce & Paid Advertising Specialist",
+    image: "https://new-vexa.com/images/team/anas.jpg",
+    description: "E-commerce solution expert with 7+ years specializing in GCC market paid advertising campaigns and Shopify development",
+    expertise: [
+      "E-commerce Consulting",
+      "Paid Advertising",
+      "GCC Market Strategy",
+      "Shopify Development",
+      "React Development",
+      "Market Data Analysis",
+      "CRO & Conversion Optimization",
+      "Data-Driven Marketing"
+    ],
+    keywords: "e-commerce, paid ads, Shopify, React, GCC, marketing, digital consulting, growth",
+    affiliation: {
+      "@type": "Organization",
+      name: "Vexa",
+      url: "https://new-vexa.com"
+    }
+  };
+
   return (
     <div className="mt-24 rounded-4xl bg-site bg-site-grain py-24 sm:mt-32 lg:mt-40 lg:py-32">
+      {/* SEO Schema Markup */}
+      <script type="application/ld+json">
+        {JSON.stringify(personSchema)}
+      </script>
       <SectionIntro
         eyebrow="Team Lead"
         title="Anas Abdul Azeez."
