@@ -32,37 +32,17 @@ const Services = () => {
           </div>
           {/* List item */}
           <List className="mt-16 lg:mt-0 lg:w-1/2 lg:min-w-[33rem] lg:pl-4">
-            <ListItem title="GCC Entry & Expansion">
-              Expand confidently into the GCC market with our end-
-to-end expertise. Headquartered in Abu Dhabi, we help
-European and UK manufacturers build a strong regional
-presence through tailored e-commerce development,
-seamless marketplace onboarding, streamlined
-inventory management,payment solution and data-driven marketing
-strategies designed for long-term growth.
+            <ListItem title="GCC Market Entry & Expansion">
+              Expand into the GCC with clarity and confidence—supported by an end-to-end partner built for the region. Headquartered in Abu Dhabi, Vexa helps European and UK manufacturers establish and grow a strong regional presence through tailored e-commerce development, structured marketplace onboarding, integrated inventory workflows, secure payment enablement, and data-led marketing strategies designed for sustainable, long-term performance.
             </ListItem>
 <ListItem title="E-commerce development">
-              We design and develop E-commerce platforms that do more
-than just look good—they drive conversions. By focusing
-on seamless navigation, intuitive interfaces, and
-engaging user experiences, we ensure every interaction
-leaves a lasting impression. As the first touchpoint for
-potential customers, your digital presence becomes the
-deciding factor between missed opportunities and
-measurable success.
+             We design and build e-commerce platforms engineered for outcomes—not just aesthetics. Through thoughtful UX, streamlined navigation, and conversion-focused design, we create digital storefronts that feel effortless to use and compelling to buy from. Your website is often the first interaction customers have with your brand in the GCC; we ensure that experience builds trust, communicates value clearly, and converts attention into measurable revenue.
             </ListItem>
                         <ListItem title="Digital marketing">
-              We specialize in performance-driven digital marketing
-strategies designed to generate leads and boost sales.
-Every campaign is tailored to your growth objectives,
-ensuring seamless alignment with your business goals.
-With a strategy-first approach, our team identifies and
-executes the most effective methods to maximize
-reach, engagement, and measurable results.
+            Our digital marketing approach is performance-led, insight-driven, and aligned to your commercial goals. We develop campaigns that generate qualified demand, strengthen brand visibility, and accelerate sales across key GCC audiences. With a strategy-first methodology, we identify the most effective channels, optimize continuously, and report transparently—so every initiative is measurable, accountable, and built to scale.
             </ListItem>
             <ListItem title="Custom Application development">
-              We have a team of skilled developers who are experts in the latest
-              app frameworks, will develop Mobile & Web apps according to your needs.
+             When off-the-shelf tools aren’t enough, we develop tailored web and mobile applications to support your operations, customer experience, and growth roadmap. Our engineering team works with modern frameworks and best-practice architecture to deliver reliable, scalable solutions—built around your requirements, timelines, and business objectives
             </ListItem>
           </List>
         </div>
