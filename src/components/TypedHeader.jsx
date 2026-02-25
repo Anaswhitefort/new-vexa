@@ -11,16 +11,19 @@ const Cursor = () => {
     }, []);
 
     return (
-        <span
-            className="inline-block w-[3px] h-[1em] bg-current ml-1 translate-y-[2px] transition-opacity duration-75"
-            style={{ opacity: visible ? 1 : 0 }}
-        />
+        // Zero-width container so it doesn't affect text flow layout
+        <span className="relative inline-block w-0 h-0">
+            <span
+                className="absolute left-[2px] bottom-0 w-[3px] h-[1em] bg-current translate-y-[2px] transition-opacity duration-75"
+                style={{ opacity: visible ? 1 : 0 }}
+            />
+        </span>
     )
 };
 
 export default function TypedHeader({ title, className = "" }) {
     const [currentTitle, setCurrentTitle] = useState("");
-    const [displayedText, setDisplayedText] = useState("");
+    const [typedCount, setTypedCount] = useState(0);
     const [isTyping, setIsTyping] = useState(false);
     const [hasStarted, setHasStarted] = useState(false);
     const ref = useRef(null);
@@ -76,14 +79,14 @@ export default function TypedHeader({ title, className = "" }) {
         if (!hasStarted || !currentTitle) return;
 
         setIsTyping(true);
-        setDisplayedText(""); // Reset displayed text when title changes
+        setTypedCount(0); // Reset typed text when title changes
         let i = 0;
 
         const startDelay = setTimeout(() => {
             const typingInterval = setInterval(() => {
                 if (i < currentTitle.length) {
-                    setDisplayedText(currentTitle.substring(0, i + 1));
                     i++;
+                    setTypedCount(i);
                 } else {
                     clearInterval(typingInterval);
                     setIsTyping(false);
@@ -98,13 +101,17 @@ export default function TypedHeader({ title, className = "" }) {
         };
     }, [currentTitle, hasStarted]);
 
+    const typedStr = currentTitle.substring(0, typedCount);
+    const untypedStr = currentTitle.substring(typedCount);
+
     return (
-        <span ref={ref} className={`relative inline-block ${className}`}>
+        <span ref={ref} className={`relative ${className}`}>
             <span className="sr-only" suppressHydrationWarning>{currentTitle}</span>
-            <span aria-hidden="true" className="inline-block">
-                {displayedText}
+            <span aria-hidden="true" suppressHydrationWarning>
+                <span>{typedStr}</span>
+                {(isTyping || (!isTyping && hasStarted)) && <Cursor />}
+                <span className="opacity-0">{untypedStr}</span>
             </span>
-            {(isTyping || (!isTyping && hasStarted)) && <Cursor />}
         </span>
     );
 }
