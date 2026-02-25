@@ -2,6 +2,7 @@ import React from "react";
 import Container from "./Container";
 import FadeIn from "./FadeIn";
 import clsx from "clsx";
+import TypedHeader from "./TypedHeader";
 
 const SectionIntro = ({
   eyebrow,
@@ -13,21 +14,33 @@ const SectionIntro = ({
 }) => {
   return (
     <Container {...props}>
-      <FadeIn className="max-w-2xl">
-        <h2>
-          {eyebrow && (
-            <>
-              <span
-                className={clsx(
-                  "mb-6 block font-display text-base font-semibold",
-                  invert ? "text-white" : "text-neutral-950"
-                )}
-              >
-                {eyebrow}
-              </span>
-              <span className="sr-only"> - </span>
-            </>
-          )}
+      <h2>
+        {eyebrow && (
+          <>
+            <span
+              className={clsx(
+                "mb-6 block font-display text-base font-semibold",
+                invert ? "text-white" : "text-neutral-950"
+              )}
+            >
+              {eyebrow}
+            </span>
+            <span className="sr-only"> - </span>
+          </>
+        )}
+        {props.typed ? (
+          <span
+            className={clsx(
+              "block font-display tracking-tight [text-wrap:balance]",
+              smaller
+                ? "text-2xl font-semibold"
+                : "text-4xl font-medium sm:text-5xl",
+              invert ? "text-white" : "text-neutral-950"
+            )}
+          >
+            <TypedHeader title={title} />
+          </span>
+        ) : (
           <span
             className={clsx(
               "block font-display tracking-tight [text-wrap:balance]",
@@ -39,7 +52,9 @@ const SectionIntro = ({
           >
             {title}
           </span>
-        </h2>
+        )}
+      </h2>
+      <FadeIn className="max-w-2xl">
         {children && (
           <div
             className={clsx(

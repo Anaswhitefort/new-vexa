@@ -2,6 +2,7 @@ import RootLayout from "@/components/RootLayout";
 import "./globals.css";
 
 export const metadata = {
+  metadataBase: new URL('https://vexa.ae'),
   title: {
     template: "%s | Vexa - Official Shopify Partner & Ecommerce Agency Abu Dhabi",
     default: "Vexa - Official Shopify Partner & Ecommerce Agency Abu Dhabi",
