@@ -16,6 +16,7 @@ const ContactForm = () => {
     phone: "",
     message: "",
     budget: "",
+    website: "", // Honeypot field
   });
 
   const handleChange = (e) => {
@@ -51,6 +52,7 @@ const ContactForm = () => {
           phone: "",
           message: "",
           budget: "",
+          website: "",
         });
       } else {
         setMessage(result.error || "Failed to send message. Please try again.");
@@ -78,6 +80,17 @@ const ContactForm = () => {
             onChange={handleChange}
             required
           />
+          {/* Honeypot field - visually hidden, but screen readers and bots can see it */}
+          <div style={{ position: "absolute", left: "-5000px" }} aria-hidden="true">
+            <input
+              type="text"
+              name="website"
+              tabIndex="-1"
+              autoComplete="off"
+              value={formData.website}
+              onChange={handleChange}
+            />
+          </div>
           <TextInput
             label="Email"
             type="email"
@@ -147,11 +160,10 @@ const ContactForm = () => {
         </div>
         {message && (
           <div
-            className={`mt-6 p-4 rounded-lg ${
-              message.includes("success") || message.includes("Thank you")
+            className={`mt-6 p-4 rounded-lg ${message.includes("success") || message.includes("Thank you")
                 ? "bg-green-50 text-green-900"
                 : "bg-red-50 text-red-900"
-            }`}
+              }`}
           >
             {message}
           </div>

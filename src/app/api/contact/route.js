@@ -5,7 +5,16 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { name, email, company, phone, message, budget } = body;
+    const { name, email, company, phone, message, budget, website } = body;
+
+    // Honeypot check - if website is filled, it's a bot
+    if (website) {
+      console.log("Spam detected - honeypot filled:", { email, website });
+      return Response.json(
+        { success: true, message: "Email sent successfully" },
+        { status: 200 }
+      );
+    }
 
     // Validate required fields
     if (!name || !email || !message) {
@@ -26,13 +35,11 @@ export async function POST(request) {
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Company:</strong> ${company || "N/A"}</p>
         <p><strong>Phone:</strong> ${phone || "N/A"}</p>
-        <p><strong>Budget:</strong> ${
-        budget
-          ? `$${budget}K${
-              budget === "150" ? "+" : ""
-            }`
+        <p><strong>Budget:</strong> ${budget
+          ? `$${budget}K${budget === "150" ? "+" : ""
+          }`
           : "N/A"
-      }</p>
+        }</p>
         <p><strong>Message:</strong></p>
         <p>${message.replace(/\n/g, "<br>")}</p>
       `,
