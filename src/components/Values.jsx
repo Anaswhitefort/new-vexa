@@ -14,42 +14,51 @@ const Values = () => {
         />
       </div>
       <SectionIntro
-        eyebrow="Our values"
-        title="Balancing reliability and innovation"
+        eyebrow="Content Creation"
+        title="Visuals that bring your brand to life"
       >
         <p>
-          We strive to stay at the forefront of emerging trends and
-          technologies, while completely ignoring them and forking that old
-          Rails project we feel comfortable using. We stand by our core values
-          to justify that decision.
+          We create compelling visuals and content that bring your brand identity
+          to life and forge meaningful connections with your audience. From
+          impactful logo design and eye-catching animations to scroll-stopping
+          short-form videos, engaging branding assets, and striking marketing
+          collaterals — our designs are meticulously crafted to capture attention,
+          drive engagement, and communicate your message with clarity and
+          creativity.
         </p>
       </SectionIntro>
       <Container className="mt-24">
         <GridList>
-          <GridListItem title="Meticulous">
-            The first part of any partnership is getting our designer to put
-            your logo in our template. The second step is getting them to do the
-            colors.
+          <GridListItem title="Logo & Brand Identity Design">
+            We craft memorable logos and cohesive brand identity systems that
+            reflect your vision and resonate with your target audience — ensuring
+            consistency across every touchpoint, from business cards to digital
+            platforms.
           </GridListItem>
-          <GridListItem title="Efficient">
-            We pride ourselves on never missing a deadline which is easy because
-            most of the work was done years ago.
+          <GridListItem title="Motion Graphics & Animation">
+            From animated explainer videos and logo reveals to dynamic social
+            media content, we bring your brand story to life through captivating
+            motion design that boosts engagement and leaves a lasting impression.
           </GridListItem>
-          <GridListItem title="Adaptable">
-            Every business has unique needs and our greatest challenge is
-            shoe-horning those needs into something we already built.
+          <GridListItem title="Social Media & TikTok Content">
+            We produce scroll-stopping, platform-optimized content for TikTok,
+            Instagram Reels, and YouTube Shorts — designed to maximize reach,
+            drive organic growth, and keep your audience coming back for more.
           </GridListItem>
-          <GridListItem title="Honest">
-            We are transparent about all of our processes, banking on the simple
-            fact our clients never actually read anything.
+          <GridListItem title="Marketing Collaterals">
+            From brochures and flyers to presentations and pitch decks, we design
+            high-impact marketing materials that clearly convey your value
+            proposition and elevate your brand&apos;s professional presence.
           </GridListItem>
-          <GridListItem title="Loyal">
-            We foster long-term relationships with our clients that go beyond
-            just delivering a product, allowing us to invoice them for decades.
+          <GridListItem title="Visual Storytelling">
+            We transform complex ideas into visually compelling narratives using
+            infographics, illustrations, and data visualizations that make your
+            content shareable, accessible, and impossible to ignore.
           </GridListItem>
-          <GridListItem title="Innovative">
-            The technological landscape is always evolving and so are we. We are
-            constantly on the lookout for new open source projects to clone.
+          <GridListItem title="Brand Strategy & Creative Direction">
+            Beyond design, we provide strategic creative direction — including
+            brand guidelines, tone of voice, and visual strategy — to ensure
+            every piece of content aligns with your long-term brand goals.
           </GridListItem>
         </GridList>
       </Container>

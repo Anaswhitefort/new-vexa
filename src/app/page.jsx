@@ -6,7 +6,7 @@ import Services from "@/components/Services";
 import Testimonials from "@/components/Testimonials";
 import GlowingBackground from "@/components/GlowingBackground";
 import TypedHeader from "@/components/TypedHeader";
-import logoPhobiaDark from "@/images/clients/phobia/logo-dark.svg";
+import logoProPartsDark from "@/images/clients/proparts/logo-dark.png";
 
 const HERO_TITLES = [
   "Building Next-generation e-commerce infrastructure. Engineered for scale.",
@@ -19,17 +19,22 @@ const HERO_TITLES = [
 export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Vexa",
+    "@type": "LocalBusiness",
+    "name": "Vexa - Official Shopify Partner & Web Developers",
     "image": "https://vexa.ae/vexa-logo-black.png",
     "url": "https://vexa.ae",
+    "priceRange": "$$$",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Abu Dhabi",
       "addressRegion": "Abu Dhabi",
       "addressCountry": "AE"
     },
-    "description": "Vexa is an official Shopify partner and award-winning ecommerce & digital marketing agency in Abu Dhabi."
+    "description": "Vexa is an official Shopify partner and award-winning ecommerce, custom web & app development, and digital marketing agency in Abu Dhabi.",
+    "sameAs": [
+      "https://www.linkedin.com/company/vexa-ae",
+      "https://www.instagram.com/vexa.ae"
+    ]
   };
 
   return (
@@ -57,11 +62,9 @@ export default function Home() {
         <Clients />
         <Testimonials
           className="mt-24 sm:mt-32 lg:mt-40"
-          client={{ name: "Phobia", logo: logoPhobiaDark }}
+          client={{ name: "Proparts UAE", logo: logoProPartsDark }}
         >
-          The team at Studio went above and beyond with our onboarding, even
-          finding a way to access the user microphone without triggering one of
-          those annoying permission dialogs.
+          We worked with Vexa to design and set up our Shopify store proparts, which has a very large and complex automotive catalogue of 500,000+ products. From day one, the team understood the scale and technical challenges of our project and handled it professionally.
         </Testimonials>
         <Services />
         <ContactSection />

@@ -1,24 +1,24 @@
 import Image from "next/image";
-import logoBrightPath from "../images/clients/bright-path/logo-light.svg";
-import logoFamilyFund from "../images/clients/family-fund/logo-light.svg";
-import logoGreenLife from "../images/clients/green-life/logo-light.svg";
-import logoHomeWork from "../images/clients/home-work/logo-light.svg";
-import logoMailSmirk from "../images/clients/mail-smirk/logo-light.svg";
-import logoNorthAdventures from "../images/clients/north-adventures/logo-light.svg";
-import logoPhobiaLight from "../images/clients/phobia/logo-light.svg";
-import logoUnseal from "../images/clients/unseal/logo-light.svg";
+import logoWeleda from "../images/clients/weleda/logo-light.png";
+import logoTwistshake from "../images/clients/twistshake/logo-light.png";
+import logoJulianaXerez from "../images/clients/juliana-xerez/logo-light.png";
+import logoTemai from "../images/clients/temai/logo-light.png";
+import logoJustForMen from "../images/clients/just-for-men/logo-light.png";
+import logoIhealth from "../images/clients/ihealth/logo-light.png";
+import logoProPartsLight from "../images/clients/proparts/logo-light.png";
+import logoAngelBridge from "../images/clients/angel-bridge/logo-light.png";
 import Container from "./Container";
 import FadeIn, { FadeInStagger } from "./FadeIn";
 
 const clients = [
-  ["Phobia", logoPhobiaLight],
-  ["Family Fund", logoFamilyFund],
-  ["Unseal", logoUnseal],
-  ["Mail Smirk", logoMailSmirk],
-  ["Home Work", logoHomeWork],
-  ["Green Life", logoGreenLife],
-  ["Bright Path", logoBrightPath],
-  ["North Adventures", logoNorthAdventures],
+  ["Proparts UAE", logoProPartsLight, { width: '50%', height: 'auto' }],
+  ["Twistshake", logoTwistshake, { width: '50%', height: 'auto' }],
+  ["Angel Bridge UAE", logoAngelBridge, { width: '50%', height: 'auto' }],
+  ["JUST FOR MEN", logoJustForMen, { width: '50%', height: 'auto' }],
+  ["Temai", logoTemai, { width: '50%', height: 'auto' }],
+  ["Juliana Xerez Dubai", logoJulianaXerez, { width: '50%', height: 'auto' }],
+  ["Weleda", logoWeleda, { width: '50%', height: 'auto' }],
+  ["ihealth uae", logoIhealth, { width: '50%', height: 'auto' }],
 ];
 
 const Clients = () => {
@@ -36,10 +36,10 @@ const Clients = () => {
             role="list"
             className="mt-10 grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-4"
           >
-            {clients.map(([client, logo]) => (
+            {clients.map(([client, logo, style]) => (
               <li key={client}>
                 <FadeIn>
-                  <Image src={logo} alt={client} unoptimized />
+                  <Image src={logo} alt={client} unoptimized style={style} />
                 </FadeIn>
               </li>
             ))}

@@ -26,7 +26,7 @@ const Testimonials = ({ children, client, className }) => {
               </p>
             </blockquote>
             <figcaption className="mt-10">
-              <Image src={client.logo} alt={client.name} unoptimized />
+              <Image src={client.logo} alt={client.name} unoptimized style={{ width: '25%', height: 'auto' }} />
             </figcaption>
           </figure>
         </FadeIn>
