@@ -95,15 +95,15 @@ const Navigation = () => {
     <nav className="mt-px font-display text-5xl font-medium tracking-tight text-white bg-site bg-site-grain">
       <NavigationRow>
         <NavigationItem href="/what-we-do">What we do</NavigationItem>
-       <NavigationItem href="/process">Our Process</NavigationItem>
+        <NavigationItem href="/process">Our Process</NavigationItem>
       </NavigationRow>
       <NavigationRow>
         <NavigationItem href="/work">Our Work</NavigationItem>
         <NavigationItem href="/our-team">Our Team</NavigationItem>
       </NavigationRow>
       <NavigationRow>
-        
-         <NavigationItem href="/about">About Us</NavigationItem>
+
+        <NavigationItem href="/about">About Us</NavigationItem>
         <NavigationItem href="/blog">Blog</NavigationItem>
       </NavigationRow>
     </nav>
@@ -208,7 +208,7 @@ const RootLayoutInner = ({ children }) => {
       <motion.div
         layout
         style={{ borderTopLeftRadius: 40, borderTopRightRadius: 40 }}
-        className="relative flex flex-auto overflow-hidden bg-white pt-14"
+        className="relative flex flex-auto bg-white pt-14"
       >
         <motion.div layout className="relative isolate flex w-full flex-col pt-9">
           <main className="w-full flex-auto">{children}</main>

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@sendgrid/mail": "^8.1.6",
     "autoprefixer": "10.4.15",
     "clsx": "^2.0.0",
@@ -16,6 +17,7 @@
     "eslint-config-next": "13.4.18",
     "framer-motion": "^10.18.0",
     "google-auth-library": "^10.5.0",
+    "gsap": "^3.14.2",
     "next": "13.4.18",
     "nodemailer": "^7.0.13",
     "postcss": "8.4.28",

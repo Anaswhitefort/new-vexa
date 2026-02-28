@@ -31,24 +31,25 @@ const Jobert = () => {
   };
 
   return (
-    <div className="mt-24 rounded-4xl bg-site bg-site-grain py-24 sm:mt-32 lg:mt-40 lg:py-32">
+    <div className="rounded-4xl bg-site bg-site-grain py-24 lg:py-32">
       {/* SEO Schema Markup */}
-      <script type="application/ld+json">
-        {JSON.stringify(personSchema)}
-      </script>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
       <SectionIntro
         eyebrow="Senior Graphic Designer"
         title="Jobert Salaya."
         invert
       >
         <p>
-With 8+ years of expertise in visual
-graphics and branding design,
-Jobert creates impactful visuals
-that elevate brand identity,
-blending creativity and strategy to
-engage audiences and strengthen
-business presence.         </p>
+          With 8+ years of expertise in visual
+          graphics and branding design,
+          Jobert creates impactful visuals
+          that elevate brand identity,
+          blending creativity and strategy to
+          engage audiences and strengthen
+          business presence.         </p>
       </SectionIntro>
       <Container className="mt-16">
         <GridList>
@@ -59,7 +60,7 @@ business presence.         </p>
             Crafts visually compelling artwork and designs that communicate brand messages effectively and inspire audience engagement.
           </GridListItem>
           <GridListItem title="Product Photography" invert>
-           Captures high-quality product images that highlight features and appeal to target customers, enhancing e-commerce and marketing efforts.
+            Captures high-quality product images that highlight features and appeal to target customers, enhancing e-commerce and marketing efforts.
           </GridListItem>
         </GridList>
       </Container>

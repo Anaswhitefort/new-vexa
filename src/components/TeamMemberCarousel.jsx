@@ -1,203 +1,95 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import Anas from "./Anas";
 import Abdullah from "./Abdullah";
 import Hussain from "./Hussain";
 import Jobert from "./Jobert";
 
+// Register ScrollTrigger
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+const teamMembers = [
+  { Component: Anas, name: "Anas" },
+  { Component: Abdullah, name: "Abdullah" },
+  { Component: Hussain, name: "Hussain" },
+  { Component: Jobert, name: "Jobert" },
+];
+
 const TeamMemberCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isInCarousel, setIsInCarousel] = useState(false);
-  const [entryDirection, setEntryDirection] = useState(null); // 'down' or 'up'
-  const carouselRef = useRef(null);
-  const wheelTimeoutRef = useRef(null);
-  const touchStartRef = useRef(0);
-  const lastScrollYRef = useRef(0);
+  const containerRef = useRef(null);
+  const cardRefs = useRef([]);
 
-  const teamMembers = [
-    { Component: Anas, name: "Anas" },
-    { Component: Abdullah, name: "Abdullah" },
-    { Component: Hussain, name: "Hussain" },
-    { Component: Jobert, name: "Jobert" },
-  ];
+  // Add refs to the array
+  const addToRefs = (el) => {
+    if (el && !cardRefs.current.includes(el)) {
+      cardRefs.current.push(el);
+    }
+  };
 
-  // Handle carousel entry/exit based on scroll position
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!carouselRef.current) return;
+  useGSAP(
+    () => {
+      const cards = cardRefs.current;
+      const lastCard = cards[cards.length - 1];
 
-      const isDesktop = window.innerWidth >= 768;
-      const rect = carouselRef.current.getBoundingClientRect();
-      const currentScrollY = window.scrollY || window.pageYOffset;
-      const isScrollingDown = currentScrollY > lastScrollYRef.current;
-      lastScrollYRef.current = currentScrollY;
+      cards.forEach((card, index) => {
+        const nextCard = cards[index + 1];
 
-      if (isDesktop) {
-        // Desktop: activate when carousel middle reaches viewport middle
-        const carouselMiddle = rect.top + rect.height / 2;
-        const viewportMiddle = window.innerHeight / 2;
-        const threshold = 100;
-        const shouldEnter =
-          Math.abs(carouselMiddle - viewportMiddle) < threshold && rect.bottom > 0;
+        // If there is a next card, set up the shrinking/fading animation
+        if (nextCard) {
+          // Calculate how much to shrink and fade based on the card's position
+          // Using similar math as the velvetica.studio example
+          const scaleOrderValue = (100 - cards.length) / 100 + (index + 1) * 0.01;
+          const opacityOrderValue = 1 - cards.length / 10 + (index + 1) * 0.1;
 
-        if (shouldEnter && !isInCarousel) {
-          setIsInCarousel(true);
-          setEntryDirection("desktop");
+          gsap.to(card, {
+            scrollTrigger: {
+              trigger: nextCard,
+              endTrigger: lastCard,
+              start: "0% 50%", // When the top of the next card hits the middle of the screen
+              end: "100% 50%", // When the bottom of the last card hits the middle
+              scrub: true, // Tie animation to scroll
+              invalidateOnRefresh: true,
+            },
+            scale: scaleOrderValue,
+            opacity: opacityOrderValue,
+            ease: "none",
+          });
         }
-      } else {
-        // Mobile: check entry when NOT in carousel
-        if (!isInCarousel) {
-          if (isScrollingDown && rect.top <= 0 && rect.bottom > 0) {
-            // Scrolling down: enter when carousel top reaches viewport top
-            setIsInCarousel(true);
-            setEntryDirection("down");
-          } else if (!isScrollingDown && rect.bottom >= window.innerHeight && rect.top < window.innerHeight) {
-            // Scrolling up: enter when carousel bottom reaches viewport bottom
-            setIsInCarousel(true);
-            setEntryDirection("up");
-          }
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Check on mount
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isInCarousel]);
-
-  // Deactivate carousel at boundaries when currentIndex reaches end/start
-  useEffect(() => {
-    // Check boundaries immediately regardless of current state
-    if (entryDirection === "down" && currentIndex === teamMembers.length - 1) {
-      // Reached Jobert (last component) - deactivate immediately
-      setIsInCarousel(false);
-      setEntryDirection(null);
-    } else if (entryDirection === "up" && currentIndex === 0) {
-      // Reached Anas (first component) - deactivate immediately
-      setIsInCarousel(false);
-      setEntryDirection(null);
-    }
-  }, [entryDirection, currentIndex, teamMembers.length]);
-
-  // Lock body scroll when carousel is active on mobile
-  useEffect(() => {
-    const isDesktop = window.innerWidth >= 768;
-    
-    if (isInCarousel && !isDesktop) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isInCarousel]);
-
-  // Handle wheel scroll
-  useEffect(() => {
-    const handleWheel = (e) => {
-      if (!isInCarousel) return;
-
-      const scrollDown = e.deltaY > 0;
-      const isAtStart = currentIndex === 0;
-      const isAtEnd = currentIndex === teamMembers.length - 1;
-
-      // Allow normal scrolling at boundaries - don't preventDefault
-      if ((scrollDown && isAtEnd) || (!scrollDown && isAtStart)) {
-        return;
-      }
-
-      e.preventDefault();
-
-      if (wheelTimeoutRef.current) return;
-
-      if (scrollDown && currentIndex < teamMembers.length - 1) {
-        setCurrentIndex(currentIndex + 1);
-      } else if (!scrollDown && currentIndex > 0) {
-        setCurrentIndex(currentIndex - 1);
-      }
-
-      wheelTimeoutRef.current = setTimeout(() => {
-        wheelTimeoutRef.current = null;
-      }, 600);
-    };
-
-    if (isInCarousel) {
-      window.addEventListener("wheel", handleWheel, { passive: false });
-    }
-
-    return () => {
-      window.removeEventListener("wheel", handleWheel);
-    };
-  }, [isInCarousel, currentIndex, teamMembers.length]);
-
-  // Handle touch swipe
-  useEffect(() => {
-    const handleTouchStart = (e) => {
-      if (!isInCarousel) return;
-      touchStartRef.current = e.touches[0].clientY;
-    };
-
-    const handleTouchEnd = (e) => {
-      if (!isInCarousel) return;
-
-      const touchEnd = e.changedTouches[0].clientY;
-      const diff = touchStartRef.current - touchEnd;
-
-      // Minimum swipe distance
-      if (Math.abs(diff) < 30) return;
-
-      const scrollDown = diff > 0;
-      const isAtStart = currentIndex === 0;
-      const isAtEnd = currentIndex === teamMembers.length - 1;
-
-      // Allow normal scrolling at boundaries
-      if ((scrollDown && isAtEnd) || (!scrollDown && isAtStart)) {
-        return;
-      }
-
-      e.preventDefault();
-
-      if (scrollDown && currentIndex < teamMembers.length - 1) {
-        setCurrentIndex(currentIndex + 1);
-      } else if (!scrollDown && currentIndex > 0) {
-        setCurrentIndex(currentIndex - 1);
-      }
-    };
-
-    if (isInCarousel) {
-      window.addEventListener("touchstart", handleTouchStart, { passive: false });
-      window.addEventListener("touchend", handleTouchEnd, { passive: false });
-    }
-
-    return () => {
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchend", handleTouchEnd);
-    };
-  }, [isInCarousel, currentIndex, teamMembers.length]);
-
-  const CurrentComponent = teamMembers[currentIndex].Component;
+      });
+    },
+    { scope: containerRef }
+  );
 
   return (
-    <div
-      ref={carouselRef}
-      className="relative w-full min-h-screen flex items-center justify-center bg-white overflow-hidden"
-    >
-      {/* Team Member Component with Swipe Animation */}
-      <motion.div
-        key={currentIndex}
-        initial={{ y: 100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: -100, opacity: 0 }}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="w-full"
-      >
-        <CurrentComponent />
-      </motion.div>
+    <div ref={containerRef} className="relative w-full mx-auto pb-32">
+      <div className="flex flex-col gap-0 relative">
+        {teamMembers.map(({ Component, name }, index) => (
+          <div
+            key={name}
+            ref={addToRefs}
+            className="w-full origin-top"
+            style={{
+              // Need sticky to keep it on screen
+              position: "sticky",
+              top: `10vh`, // Add some spacing so they don't hit the very top edge immediately
+              // Give it height so they actually scroll past each other
+              marginBottom: index === teamMembers.length - 1 ? "0" : "50vh",
+              zIndex: index, // Ensure newer cards stack on top of older cards
+            }}
+          >
+            {/* Render the actual team member component */}
+            <div className="bg-neutral-950 rounded-4xl shadow-[0_-10px_40px_rgba(0,0,0,0.3)]">
+              <Component />
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

@@ -32,29 +32,30 @@ const Abdullah = () => {
   };
 
   return (
-    <div className="mt-24 rounded-4xl bg-site bg-site-grain py-24 sm:mt-32 lg:mt-40 lg:py-32">
+    <div className="rounded-4xl bg-site bg-site-grain py-24 lg:py-32">
       {/* SEO Schema Markup */}
-      <script type="application/ld+json">
-        {JSON.stringify(personSchema)}
-      </script>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
       <SectionIntro
         eyebrow="Social Media Manager"
         title="Abdullah Awawdeh."
         invert
       >
         <p>
-With 5+ years of experience as a social media manager, voice artist, and content moderator, Abdullah blends creativity and precision to craft engaging content, manage communities, and amplify brand presence online.       </p>
+          With 5+ years of experience as a social media manager, voice artist, and content moderator, Abdullah blends creativity and precision to craft engaging content, manage communities, and amplify brand presence online.       </p>
       </SectionIntro>
       <Container className="mt-16">
         <GridList>
           <GridListItem title="Advertising Specialist" invert>
-           Plans and optimizes paid social campaigns, sharp targeting, and A/B testing to boost reach, conversions, and measurable ROI consistently.
+            Plans and optimizes paid social campaigns, sharp targeting, and A/B testing to boost reach, conversions, and measurable ROI consistently.
           </GridListItem>
           <GridListItem title="Voice Over Artist" invert>
-           Delivers clear, expressive voice-overs for ads and videos, matching brand tone with professional pacing, emotion, and pronunciation.
+            Delivers clear, expressive voice-overs for ads and videos, matching brand tone with professional pacing, emotion, and pronunciation.
           </GridListItem>
           <GridListItem title="Scripting & Editing" invert>
-Writes compelling scripts and edits videos with strong hooks, smooth pacing, captions, and sound timing to boost engagement.          </GridListItem>
+            Writes compelling scripts and edits videos with strong hooks, smooth pacing, captions, and sound timing to boost engagement.          </GridListItem>
         </GridList>
       </Container>
     </div>

@@ -31,24 +31,25 @@ const Hussain = () => {
   };
 
   return (
-    <div className="mt-24 rounded-4xl bg-site bg-site-grain py-24 sm:mt-32 lg:mt-40 lg:py-32">
+    <div className="rounded-4xl bg-site bg-site-grain py-24 lg:py-32">
       {/* SEO Schema Markup */}
-      <script type="application/ld+json">
-        {JSON.stringify(personSchema)}
-      </script>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
       <SectionIntro
         eyebrow="Content Creator"
         title="Hussain Bin Mohamed."
         invert
       >
         <p>
-With 5+ years of expertise in
-videography and editing, Hussain
-specializes in producing compelling
-content that captures brand stories,
-engages audiences, and enhances
-digital presence through high-quality
-visual storytelling and creativity.       </p>
+          With 5+ years of expertise in
+          videography and editing, Hussain
+          specializes in producing compelling
+          content that captures brand stories,
+          engages audiences, and enhances
+          digital presence through high-quality
+          visual storytelling and creativity.       </p>
       </SectionIntro>
       <Container className="mt-16">
         <GridList>

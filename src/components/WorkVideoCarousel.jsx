@@ -2,7 +2,13 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const CircularProgress = ({ percentage }) => {
   const circumference = 2 * Math.PI * 45;
@@ -40,20 +46,9 @@ const CircularProgress = ({ percentage }) => {
 };
 
 const WorkVideoCarousel = () => {
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const [loadingProgress, setLoadingProgress] = useState({
-    0: 0,
-    1: 0,
-  });
-  const [loadingComplete, setLoadingComplete] = useState({
-    0: false,
-    1: false,
-  });
-  const [preloadedVideos, setPreloadedVideos] = useState(new Set());
-  const scrollContainerRef = useRef(null);
-  const lastScrollRef = useRef(0);
-  const scrollDelayRef = useRef(0);
+  const containerRef = useRef(null);
+  const cardRefs = useRef([]);
 
   const videos = [
     {
@@ -98,233 +93,96 @@ const WorkVideoCarousel = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Preload adjacent videos for faster switching
-  useEffect(() => {
-    const nextIndex = (currentVideoIndex + 1) % videos.length;
-    const prevIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
-    const indicesToPreload = [currentVideoIndex, nextIndex, prevIndex];
-
-    indicesToPreload.forEach((index) => {
-      if (!preloadedVideos.has(index)) {
-        const link = document.createElement("link");
-        link.rel = "preload";
-        link.as = "video";
-        link.href = isMobile ? videos[index].mobile : videos[index].desktop;
-        document.head.appendChild(link);
-
-        setPreloadedVideos((prev) => new Set([...prev, index]));
-      }
-    });
-  }, [currentVideoIndex, isMobile, videos, preloadedVideos]);
-
-  // Handle scroll for video switching with throttling
-  useEffect(() => {
-    const handleScroll = () => {
-      const now = Date.now();
-      if (now - scrollDelayRef.current < 400) return; // Throttle scroll changes
-
-      const scrollDelta = window.scrollY - lastScrollRef.current;
-
-      if (scrollDelta > 50) {
-        // Scrolling down
-        if (currentVideoIndex < videos.length - 1) {
-          setCurrentVideoIndex(currentVideoIndex + 1);
-          scrollDelayRef.current = now;
-        }
-        lastScrollRef.current = window.scrollY;
-      } else if (scrollDelta < -50) {
-        // Scrolling up
-        if (currentVideoIndex > 0) {
-          setCurrentVideoIndex(currentVideoIndex - 1);
-          scrollDelayRef.current = now;
-        }
-        lastScrollRef.current = window.scrollY;
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [currentVideoIndex, videos.length]);
-
-  // Handle touch swipe for mobile
-  useEffect(() => {
-    let touchStartY = 0;
-
-    const handleTouchStart = (e) => {
-      touchStartY = e.touches[0].clientY;
-    };
-
-    const handleTouchEnd = (e) => {
-      const touchEndY = e.changedTouches[0].clientY;
-      const diff = touchStartY - touchEndY;
-
-      if (Math.abs(diff) > 50) {
-        // Minimum 50px swipe
-        if (diff > 0 && currentVideoIndex < videos.length - 1) {
-          // Swiped up - show next video
-          setCurrentVideoIndex(currentVideoIndex + 1);
-        } else if (diff < 0 && currentVideoIndex > 0) {
-          // Swiped down - show previous video
-          setCurrentVideoIndex(currentVideoIndex - 1);
-        }
-      }
-    };
-
-    if (isMobile) {
-      window.addEventListener("touchstart", handleTouchStart, { passive: true });
-      window.addEventListener("touchend", handleTouchEnd, { passive: true });
+  const addToRefs = (el) => {
+    if (el && !cardRefs.current.includes(el)) {
+      cardRefs.current.push(el);
     }
+  };
 
-    return () => {
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchend", handleTouchEnd);
-    };
-  }, [currentVideoIndex, videos.length, isMobile]);
+  useGSAP(
+    () => {
+      const cards = cardRefs.current;
+      const lastCard = cards[cards.length - 1];
 
-  // Simulate faster video loading with better progress
-  useEffect(() => {
-    if (loadingComplete[currentVideoIndex]) return;
+      cards.forEach((card, index) => {
+        const nextCard = cards[index + 1];
 
-    const interval = setInterval(() => {
-      setLoadingProgress((prev) => {
-        const currentProgress = prev[currentVideoIndex] || 0;
-        let newProgress = currentProgress;
+        if (nextCard) {
+          const scaleOrderValue = (100 - cards.length) / 100 + (index + 1) * 0.01;
+          const opacityOrderValue = 1 - cards.length / 10 + (index + 1) * 0.1;
 
-        // Faster initial loading, slower as it approaches 100
-        if (currentProgress < 30) {
-          newProgress = currentProgress + Math.random() * 20;
-        } else if (currentProgress < 70) {
-          newProgress = currentProgress + Math.random() * 15;
-        } else {
-          newProgress = currentProgress + Math.random() * 8;
+          gsap.to(card, {
+            scrollTrigger: {
+              trigger: nextCard,
+              endTrigger: lastCard,
+              start: "0% 50%",
+              end: "100% 50%",
+              scrub: true,
+              invalidateOnRefresh: true,
+            },
+            scale: scaleOrderValue,
+            opacity: opacityOrderValue,
+            ease: "none",
+          });
         }
-
-        if (newProgress >= 100) {
-          setLoadingComplete((prevComplete) => ({
-            ...prevComplete,
-            [currentVideoIndex]: true,
-          }));
-          return prev;
-        }
-        return { ...prev, [currentVideoIndex]: Math.min(newProgress, 99) };
       });
-    }, 150); // Faster update interval
-
-    return () => clearInterval(interval);
-  }, [currentVideoIndex, loadingComplete]);
-
-  const videoSrc = isMobile
-    ? videos[currentVideoIndex].mobile
-    : videos[currentVideoIndex].desktop;
-
-  const currentProgress = loadingProgress[currentVideoIndex];
-  const isLoading = !loadingComplete[currentVideoIndex];
+    },
+    { scope: containerRef }
+  );
 
   return (
-    <div className="w-full py-16 md:py-24">
-      <div className="max-w-5xl mx-auto px-4">
-        {/* Video Container */}
-        <motion.div
-          key={currentVideoIndex}
-          initial={{ x: isMobile ? 0 : 400, opacity: 0, y: isMobile ? 20 : 0 }}
-          animate={{ x: 0, opacity: 1, y: 0 }}
-          exit={{ x: isMobile ? 0 : -400, opacity: 0, y: isMobile ? -20 : 0 }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          style={
-            isMobile
-              ? { aspectRatio: "9 / 18" }
-              : { aspectRatio: "16 / 9" }
-          }
-          className="relative rounded-2xl overflow-hidden bg-gray-900 shadow-2xl"
-        >
-          {/* Loading Indicator */}
-          {isLoading && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="absolute inset-0 flex items-center justify-center bg-black/60 z-20"
+    <div ref={containerRef} className="w-full relative mx-auto py-16 md:py-24 pb-32">
+      <div className="flex flex-col gap-0 relative max-w-5xl mx-auto px-4">
+        {videos.map((video, index) => {
+          const videoSrc = isMobile ? video.mobile : video.desktop;
+
+          return (
+            <div
+              key={video.title + index}
+              ref={addToRefs}
+              className="w-full origin-top"
+              style={{
+                position: "sticky",
+                top: "10vh",
+                transform: `translateY(${index * 20}px)`,
+                marginBottom: index === videos.length - 1 ? "0" : "50vh",
+                zIndex: index,
+              }}
             >
-              <CircularProgress percentage={Math.round(currentProgress)} />
-            </motion.div>
-          )}
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-neutral-900 border border-neutral-800">
+                {/* Video container */}
+                <div
+                  style={
+                    isMobile
+                      ? { aspectRatio: "9 / 18" }
+                      : { aspectRatio: "16 / 9" }
+                  }
+                  className="w-full relative"
+                >
+                  <video
+                    src={videoSrc}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
 
-          {/* Video with optimized loading */}
-          <video
-            key={videoSrc}
-            src={videoSrc}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className="w-full h-full object-cover"
-            onCanPlay={() => {
-              setLoadingProgress((prev) => ({
-                ...prev,
-                [currentVideoIndex]: 100,
-              }));
-              setLoadingComplete((prev) => ({
-                ...prev,
-                [currentVideoIndex]: true,
-              }));
-            }}
-          />
-        </motion.div>
-
-        {/* Video Title and Counter */}
-        <div className="mt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div>
-            <h3 className="text-2xl md:text-3xl font-bold text-white">
-              {videos[currentVideoIndex].title}
-            </h3>
-            <p className="text-gray-400 text-sm mt-1">
-              Project {currentVideoIndex + 1} of {videos.length}
-            </p>
-          </div>
-
-          {/* Scroll/Swipe Indicator */}
-          <div className="flex md:hidden items-center gap-2 text-gray-400 text-xs">
-            <span>Swipe or scroll to explore</span>
-            <motion.div
-              animate={{ y: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
-              ↓
-            </motion.div>
-          </div>
-          <div className="hidden md:flex items-center gap-2 text-gray-400 text-sm">
-            <span>Scroll to explore</span>
-            <motion.div
-              animate={{ y: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
-              ↓
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Progress Indicators */}
-        <div className="mt-6 flex gap-2 overflow-x-auto">
-          {videos.map((_, index) => (
-            <motion.button
-              key={index}
-              onClick={() => setCurrentVideoIndex(index)}
-              className={`h-1 rounded-full transition-all flex-shrink-0 ${
-                index === currentVideoIndex
-                  ? "bg-white flex-1 md:w-24"
-                  : "bg-gray-600 w-12"
-              }`}
-              layoutId="progress"
-              aria-label={`Go to project ${index + 1}`}
-            />
-          ))}
-        </div>
-
-        {/* Mobile Controls Hint */}
-        <div className="md:hidden mt-4 text-center text-gray-500 text-xs">
-          Tap dots or swipe to navigate
-        </div>
+                {/* Video Title */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 bg-gradient-to-t from-black/80 to-transparent">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white">
+                    {video.title}
+                  </h3>
+                  <p className="text-gray-300 text-sm mt-1">
+                    Project {index + 1} of {videos.length}
+                  </p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
