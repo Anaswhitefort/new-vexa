@@ -132,7 +132,7 @@ const WorkVideoCarousel = () => {
 
   return (
     <div ref={containerRef} className="w-full relative mx-auto py-16 md:py-24 pb-32">
-      <div className="flex flex-col gap-0 relative max-w-5xl mx-auto px-4">
+      <div className="flex flex-col gap-0 relative max-w-[77rem] mx-auto px-4">
         {videos.map((video, index) => {
           const videoSrc = isMobile ? video.mobile : video.desktop;
 
