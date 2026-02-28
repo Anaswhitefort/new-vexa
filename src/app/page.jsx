@@ -7,6 +7,7 @@ import Testimonials from "@/components/Testimonials";
 import GlowingBackground from "@/components/GlowingBackground";
 import TypedHeader from "@/components/TypedHeader";
 import logoProPartsDark from "@/images/clients/proparts/logo-dark.png";
+import WorkVideoCarousel from "@/components/WorkVideoCarousel";
 
 const HERO_TITLES = [
   "Building Next-generation e-commerce infrastructure. Engineered for scale.",
@@ -67,6 +68,7 @@ export default function Home() {
           We worked with Vexa to design and set up our Shopify store proparts, which has a very large and complex automotive catalogue of 500,000+ products. From day one, the team understood the scale and technical challenges of our project and handled it professionally.
         </Testimonials>
         <Services />
+        <WorkVideoCarousel />
         <ContactSection />
       </main>
     </>
