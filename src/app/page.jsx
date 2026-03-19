@@ -65,7 +65,7 @@ export default function Home() {
           className="mt-24 sm:mt-32 lg:mt-40"
           client={{ name: "Proparts UAE", logo: logoProPartsDark }}
         >
-          We worked with Vexa to design and set up our Shopify store proparts, which has a very large and complex automotive catalogue of 500,000+ products. From day one, the team understood the scale and technical challenges of our project and handled it professionally.
+          We worked with Vexa to design and set up our custom ecommerce store, which has a very large and complex automotive catalogue of 500,000+ products. From day one, the team understood the scale and technical challenges of our project and handled it professionally.
         </Testimonials>
         <Services />
         <WorkVideoCarousel />
