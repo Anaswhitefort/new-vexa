@@ -12,7 +12,7 @@ const Cursor = () => {
 
     return (
         // Zero-width container so it doesn't affect text flow layout
-        <span className="relative inline-block w-0 h-0">
+        <span className="relative inline">
             <span
                 className="absolute left-[2px] bottom-0 w-[3px] h-[1em] bg-current translate-y-[2px] transition-opacity duration-75"
                 style={{ opacity: visible ? 1 : 0 }}

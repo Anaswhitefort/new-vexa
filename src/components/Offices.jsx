@@ -23,12 +23,12 @@ const Offices = ({ invert = false, ...props }) => {
         <Office name="Abu Dhabi" invert={invert}>
           Vexa L.L.C
           <br />
-          Al reem island <br /> Building 6, Office 401<br />
+          Falcon Tower<br /> Hamdan st<br /> Corner AirPort Road<br />
           Abu Dhabi,<br /> United Arab Emirates
         </Office>
       </li>
       <li>
-        <Office name="Vexa Group" invert={invert}>         
+        <Office name="Vexa Group" invert={invert}>
           <a href="https://vexa.ae" target="_blank" rel="noopener noreferrer" className="hover:underline">Vexa Advertisments</a>
           <br />
           <a href="https://realty.vexa.ae" target="_blank" rel="noopener noreferrer" className="hover:underline">Vexa Realty</a>

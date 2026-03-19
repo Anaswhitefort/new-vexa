@@ -21,7 +21,7 @@ const WorkPage = () => {
         title="Proven solutions for real-world problems."
       >
         <p>
-          Explore our portfolio of successful projects and case studies showcasing our expertise in Shopify development and digital marketing.
+          Explore our portfolio of successful projects and case studies showcasing our expertise in Custom Ecommerce, Shopify development and digital marketing.
         </p>
       </PageIntro>
       <WorkVideoCarousel />

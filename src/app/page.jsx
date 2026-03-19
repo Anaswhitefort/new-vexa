@@ -48,7 +48,7 @@ export default function Home() {
         <GlowingBackground className="relative overflow-hidden pb-32 rounded-t-[2.5rem]">
           <Container className="mt-54 sm:mt-52 relative z-10">
             <FadeIn className="max-w-4xl">
-              <h1 className="font-display text-5xl font-medium tracking-tight text-white [text-wrap:balance] sm:text-7xl min-h-[160px] sm:min-h-[220px]">
+              <h1 className="font-display text-5xl font-medium tracking-tight text-white sm:text-7xl min-h-[160px] sm:min-h-[220px]">
                 <TypedHeader title={HERO_TITLES} />
               </h1>
               <p className="mt-6 text-xl text-neutral-300">
