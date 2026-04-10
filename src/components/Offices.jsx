@@ -35,6 +35,8 @@ const Offices = ({ invert = false, ...props }) => {
           <br />
           <a href="https://lms.vexa.ae" target="_blank" rel="noopener noreferrer" className="hover:underline">Vexa LMS</a>
           <br />
+          <a href="https://shopify.vexa.ae" target="_blank" rel="noopener noreferrer" className="hover:underline">Shopify</a>
+          <br />
           <a href="https://proparts.ae" target="_blank" rel="noopener noreferrer" className="hover:underline">ProParts</a>
           <br />
           <a href="https://emiratiman.com/" target="_blank" rel="noopener noreferrer" className="hover:underline">EmiratiMan AI</a>
