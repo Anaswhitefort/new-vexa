@@ -28,12 +28,17 @@ const Offices = ({ invert = false, ...props }) => {
         </Office>
       </li>
       <li>
-        <Office name="Vexa Group" invert={invert}>
+        <Office name="Products & Services" invert={invert}>
           <a href="https://vexa.ae" target="_blank" rel="noopener noreferrer" className="hover:underline">Vexa Advertisments</a>
           <br />
           <a href="https://realty.vexa.ae" target="_blank" rel="noopener noreferrer" className="hover:underline">Vexa Realty</a>
           <br />
           <a href="https://lms.vexa.ae" target="_blank" rel="noopener noreferrer" className="hover:underline">Vexa LMS</a>
+          <br />
+          <a href="https://proparts.ae" target="_blank" rel="noopener noreferrer" className="hover:underline">ProParts</a>
+          <br />
+          <a href="https://emiratiman.com/" target="_blank" rel="noopener noreferrer" className="hover:underline">EmiratiMan AI</a>
+
         </Office>
       </li>
     </ul>
