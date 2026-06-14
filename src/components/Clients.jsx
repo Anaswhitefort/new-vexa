@@ -6,14 +6,14 @@ import logoTemai from "../images/clients/temai/logo-light.png";
 import logoJustForMen from "../images/clients/just-for-men/logo-light.png";
 import logoIhealth from "../images/clients/ihealth/logo-light.png";
 import logoProPartsLight from "../images/clients/proparts/logo-light.png";
-import logoAngelBridge from "../images/clients/angel-bridge/logo-light.png";
+import logoAngelico from "../images/clients/angelico/logo-light.png";
 import Container from "./Container";
 import FadeIn, { FadeInStagger } from "./FadeIn";
 
 const clients = [
   ["Proparts UAE", logoProPartsLight, { width: '50%', height: 'auto' }],
   ["Twistshake", logoTwistshake, { width: '50%', height: 'auto' }],
-  ["Angel Bridge UAE", logoAngelBridge, { width: '50%', height: 'auto' }],
+  ["Angelico", logoAngelico, { width: '50%', height: 'auto' }],
   ["JUST FOR MEN", logoJustForMen, { width: '50%', height: 'auto' }],
   ["Temai", logoTemai, { width: '50%', height: 'auto' }],
   ["Juliana Xerez Dubai", logoJulianaXerez, { width: '50%', height: 'auto' }],
