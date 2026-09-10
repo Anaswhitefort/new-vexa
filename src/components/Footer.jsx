@@ -4,6 +4,7 @@ import FadeIn from "./FadeIn";
 import FooterNavigation from "./FooterNavigation";
 import Logo from "./Logo";
 import Link from "next/link";
+import ShopifyWebsiteLink from "./ShopifyWebsiteLink";
 
 const ArrowIcon = (props) => {
   return (
@@ -54,6 +55,10 @@ const Footer = () => {
   return (
     <Container as="footer" className="mt-24 w-full sm:mt-32 lg:mt-40">
       <FadeIn>
+        <p className="mb-10 max-w-3xl text-sm text-neutral-700">
+          Vexa L.L.C operates vexa.ae and shopify.vexa.ae, our dedicated Shopify
+          services website. <ShopifyWebsiteLink />
+        </p>
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:gap-y-16 lg:grid-cols-2">
           <FooterNavigation />
           <div className="flex lg:justify-end">

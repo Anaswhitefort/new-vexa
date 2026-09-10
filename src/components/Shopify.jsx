@@ -2,11 +2,18 @@ import React from "react";
 import Section from "./Section";
 import imageShopify from "@/images/shopify-traning.jpg";
 import List, { ListItem } from "./List";
+import ShopifyWebsiteLink from "./ShopifyWebsiteLink";
 
 const Shopify = () => {
   return (
-    <Section title="Shopify Onboarding & Training" image={{ src: imageShopify, shape: 1 }}>
+    <Section title="Shopify Services by Vexa" image={{ src: imageShopify, shape: 1 }}>
       <div className="space-y-6 text-base text-neutral-600">
+        <p>
+          Shopify.vexa.ae is Vexa’s dedicated website for detailed Shopify services.
+          It is operated by Vexa L.L.C, the same company behind vexa.ae,
+          based in Abu Dhabi, UAE.
+        </p>
+        <p><ShopifyWebsiteLink /></p>
         <p>
           As an official Shopify Partner, we streamline your launch by guiding you through every step of Shopify onboarding—from store setup and theme configuration to development, product integration and policies {" "}
           <strong className="font-semibold text-neutral-950">

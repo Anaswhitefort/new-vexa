@@ -41,6 +41,19 @@ const ContactDetails = () => {
       </Border>
       <Border className="mt-16 pt-16">
         <h2 className="font-display text-base font-semibold text-neutral-950">
+          Call us
+        </h2>
+        <p className="mt-6 text-sm">
+          <Link
+            href="tel:+971563901109"
+            className="text-neutral-600 hover:text-neutral-950"
+          >
+            +971 563 90 1109
+          </Link>
+        </p>
+      </Border>
+      <Border className="mt-16 pt-16">
+        <h2 className="font-display text-base font-semibold text-neutral-950">
           Follow us
         </h2>
         <SocialMedia className="mt-6" />

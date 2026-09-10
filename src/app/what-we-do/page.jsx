@@ -8,20 +8,37 @@ import Fulfillment from "@/components/Fulfillment";
 import PageIntro from "@/components/PageIntro";
 import Values from "@/components/Values";
 import React from "react";
+import { organizationId, shopifyService } from "@/lib/business";
 
 export const metadata = {
   title: "Services | Shopify Development, Web Design & Marketing - Vexa Abu Dhabi",
-  description: "Vexa offers comprehensive ecommerce services including Shopify development, web design, digital marketing, and content creation. Official Shopify partner in Abu Dhabi, UAE.",
+  description: "Explore Vexa’s ecommerce, web and marketing services. Detailed Shopify services are on shopify.vexa.ae, operated by the same Vexa L.L.C team in Abu Dhabi.",
+  alternates: { canonical: "https://vexa.ae/what-we-do" },
   keywords: "Shopify development UAE, web design services, ecommerce marketing, Shopify setup, digital marketing agency Abu Dhabi, Shopify expert",
   openGraph: {
     title: "Ecommerce Services - Shopify Development & Marketing - Vexa",
-    description: "Discover our full range of ecommerce and digital services designed to transform your business online.",
+    description: "Explore Vexa’s ecommerce and digital services, with detailed Shopify services on shopify.vexa.ae. Both websites are operated by Vexa L.L.C.",
+    url: "https://vexa.ae/what-we-do",
   },
 };
 
 const ProcessPage = () => {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "@id": "https://vexa.ae/what-we-do#webpage",
+          url: "https://vexa.ae/what-we-do",
+          name: "Vexa Ecommerce, Shopify and Digital Services",
+          isPartOf: { "@id": "https://vexa.ae/#website" },
+          publisher: { "@id": organizationId },
+          about: { "@id": shopifyService["@id"] },
+          relatedLink: "https://shopify.vexa.ae/",
+        }).replace(/</g, "\\u003c") }}
+      />
       <PageIntro eyebrow="From Abu Dhabi" title="What we do">
         <p>
      To be the Middle East’s leading e-commerce and digital

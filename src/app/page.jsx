@@ -17,33 +17,14 @@ const HERO_TITLES = [
   "Leading E-commerce expansion from Abu Dhabi. We build digital commerce that dominates."
 ];
 
-export default function Home() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Vexa - Official Shopify Partner & Web Developers",
-    "image": "https://vexa.ae/vexa-logo-black.png",
-    "url": "https://vexa.ae",
-    "priceRange": "$$$",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Abu Dhabi",
-      "addressRegion": "Abu Dhabi",
-      "addressCountry": "AE"
-    },
-    "description": "Vexa is an official Shopify partner and award-winning ecommerce, custom web & app development, and digital marketing agency in Abu Dhabi.",
-    "sameAs": [
-      "https://www.linkedin.com/company/vexa-ae",
-      "https://www.instagram.com/vexa.ae"
-    ]
-  };
+export const metadata = {
+  alternates: { canonical: "https://vexa.ae/" },
+  description: "Vexa L.L.C in Abu Dhabi provides ecommerce, web development and marketing services. Explore our dedicated Shopify services website at shopify.vexa.ae.",
+};
 
+export default function Home() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       <main className="text-white pt-24 sm:pt-16">
         <GlowingBackground className="relative overflow-hidden pb-32 rounded-t-[2.5rem]">
           <Container className="mt-54 sm:mt-52 relative z-10">

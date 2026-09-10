@@ -5,6 +5,7 @@ import FadeIn from "./FadeIn";
 import StylizedImage from "./StylizedImage";
 import imageLaptop from "../images/laptop.jpg";
 import List, { ListItem } from "./List";
+import ShopifyWebsiteLink from "./ShopifyWebsiteLink";
 
 const Services = () => {
   return (
@@ -37,6 +38,11 @@ const Services = () => {
             </ListItem>
             <ListItem title="E-commerce Systems">
               High-performance commerce. We engineer digital storefronts optimized for conversion and speed. Modern tech stacks, frictionless UX, and measurable outcomes.
+            </ListItem>
+            <ListItem title="Shopify Services">
+              Our dedicated Shopify services website, shopify.vexa.ae, covers
+              our Shopify offering in detail. Both sites are operated by Vexa L.L.C.
+              {" "}<ShopifyWebsiteLink />
             </ListItem>
             <ListItem title="Performance Marketing">
               Data-driven growth. We deploy precision campaigns to generate qualified demand. Continuous optimization, transparent reporting, and strategies that scale.

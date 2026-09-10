@@ -4,14 +4,17 @@ import Cultures from "@/components/Cultures";
 import PageIntro from "@/components/PageIntro";
 import { StatList, StatListItem } from "@/components/StatList";
 import React from "react";
+import ShopifyWebsiteLink from "@/components/ShopifyWebsiteLink";
 
 export const metadata = {
   title: "About Vexa | Official Shopify Partner Abu Dhabi",
-  description: "Learn about Vexa, an official Shopify partner and ecommerce agency in Abu Dhabi. Discover our mission, team, and expertise in digital transformation for businesses across the UAE.",
+  description: "Meet Vexa L.L.C, the Abu Dhabi company behind vexa.ae and shopify.vexa.ae, our dedicated Shopify services website.",
+  alternates: { canonical: "https://vexa.ae/about" },
   keywords: "about Vexa, Shopify partner team, ecommerce agency Abu Dhabi, digital marketing expertise, web development company UAE",
   openGraph: {
     title: "About Vexa - Official Shopify Partner & Ecommerce Agency",
-    description: "Meet the team behind Vexa, Abu Dhabi's leading Shopify partner and ecommerce development agency.",
+    description: "Vexa L.L.C operates vexa.ae and shopify.vexa.ae, its dedicated Shopify services website. One company, based in Abu Dhabi, UAE.",
+    url: "https://vexa.ae/about",
   },
 };
 
@@ -24,6 +27,13 @@ const AboutPage = () => {
           puts our clients at the center of everything we do.
         </p>
         <div className="mt-10 max-w-2xl space-y-6 text-base">
+          <p>
+            Vexa L.L.C operates both vexa.ae and shopify.vexa.ae. This website
+            introduces our wider ecommerce, development, and marketing services;
+            shopify.vexa.ae is our dedicated website for detailed Shopify services.
+            Both websites represent the same company based in Abu Dhabi, UAE.
+          </p>
+          <p><ShopifyWebsiteLink /></p>
           <p>
             Vexa.ae was started by three friends who noticed that developer
             studios were charging clients double what an in-house team would

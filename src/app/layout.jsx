@@ -1,4 +1,5 @@
 import RootLayout from "@/components/RootLayout";
+import { businessGraph } from "@/lib/business";
 import "./globals.css";
 
 export const metadata = {
@@ -26,6 +27,10 @@ export default function Layout({ children }) {
   return (
     <html lang="en" className="h-full text-base antialiased text-neutral-100">
       <body className="min-h-full">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(businessGraph).replace(/</g, "\\u003c") }}
+        />
         <div className="fixed inset-0 -z-10 bg-site bg-site-grain" aria-hidden="true" />
 
         <div className="flex min-h-full flex-col">
